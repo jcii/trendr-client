@@ -7,7 +7,7 @@ const APP_ROUTES = [
     {path: '', component: LoginRootComponent}, 
     {path: 'user', component: LoginRootComponent},
     {path: 'home', component: HomeRootComponent},
-    {path: 'trend', component: TrendDetailRootComponent}
+    {path: 'trend/:trendId', component: TrendDetailRootComponent}
 ]
 
 
