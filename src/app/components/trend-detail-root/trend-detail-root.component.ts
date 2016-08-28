@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { NavbarComponent } from '../navbar'
-import { ROUTER_DIRECTIVES, Router } from '@angular/router'
+import { ROUTER_DIRECTIVES, Router, ActivatedRoute} from '@angular/router'
 import { Response } from '@angular/http'
 import { Subscription } from 'rxjs/Rx'
 import { GetDataService } from '../../services/get-data.service'
@@ -15,28 +15,28 @@ import { GetDataService } from '../../services/get-data.service'
   providers: [GetDataService]
 })
 export class TrendDetailRootComponent implements OnInit {
-  // private subscription: Subscription
-  // trendId: any
+  private subscription: Subscription
+  trendId: any
 
-  // constructor(private activatedRoute: ActivatedRoute) {
-  //   this. subscription = activatedRoute.params.subscribe((params: any) => this.trendId = params['trendId'])
-  //  }
-
-  constructor(private getDataService: GetDataService) {}
+  constructor(private getDataService: GetDataService, private activatedRoute: ActivatedRoute) {
+    this.subscription = activatedRoute.params.subscribe(param => {
+      this.trendId = param['trendId']
+    })
+  }
 
   ngOnInit() {
     this.getDataService.getData('http://localhost:3000/realtimeStocks').subscribe(data => {
-      console.log(data);
+      console.log(typeof data);
       
-      this.getDataService.postData('http://localhost:3000/realtimeStocks/updateDatabase', data).subscribe(finalData => {
+      this.getDataService.postData('http://localhost:3000/realtimeStocks/updateDatabase', JSON.parse(data)).subscribe(finalData => {
         console.log(finalData)
       })
       
     })
   }
 
-  // ngOnDestroy() {
-  //   this.subscription.unsubscribe()
-  // }
+  ngOnDestroy() {
+    this.subscription.unsubscribe()
+  }
 
 }
