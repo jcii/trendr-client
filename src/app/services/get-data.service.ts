@@ -11,9 +11,9 @@ export class GetDataService {
     return this.http.get(url).map((response: Response) => response.json())
   }
 
-  // postData(url: string, postObj: any) {
-  //   return this.http.post()
-  // }
+  postData(url: string, postObj: any) {
+    return this.http.post(url, postObj).map((response: Response) => response.json())
+  }
 
 
 }

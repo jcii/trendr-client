@@ -25,7 +25,14 @@ export class TrendDetailRootComponent implements OnInit {
   constructor(private getDataService: GetDataService) {}
 
   ngOnInit() {
-    this.getDataService.getData('http://dev.markitondemand.com/MODApis/Api/v2/Quote/json?symbol=NFLX').subscribe(data => console.log(data))
+    this.getDataService.getData('http://localhost:3000/realtimeStocks').subscribe(data => {
+      console.log(data);
+      
+      this.getDataService.postData('http://localhost:3000/realtimeStocks/updateDatabase', data).subscribe(finalData => {
+        console.log(finalData)
+      })
+      
+    })
   }
 
   // ngOnDestroy() {
