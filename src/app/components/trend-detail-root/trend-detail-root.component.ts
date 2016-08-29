@@ -4,6 +4,7 @@ import { ROUTER_DIRECTIVES, Router, ActivatedRoute} from '@angular/router'
 import { Response } from '@angular/http'
 import { Subscription } from 'rxjs/Rx'
 import { GetDataService } from '../../services/get-data.service'
+import { StockHistoryComponent } from '../stock-history'
 
 
 @Component({
@@ -11,7 +12,7 @@ import { GetDataService } from '../../services/get-data.service'
   selector: 'app-trend-detail-root',
   templateUrl: 'trend-detail-root.component.html',
   styleUrls: ['trend-detail-root.component.css'],
-  directives: [NavbarComponent, ROUTER_DIRECTIVES],
+  directives: [NavbarComponent, ROUTER_DIRECTIVES, StockHistoryComponent],
   providers: [GetDataService]
 })
 export class TrendDetailRootComponent implements OnInit {
@@ -36,7 +37,7 @@ export class TrendDetailRootComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.stockInterval = setInterval(this.getStockData, 3000)
+    // this.stockInterval = setInterval(this.getStockData, 5000)
     }
 
   ngOnDestroy() {
