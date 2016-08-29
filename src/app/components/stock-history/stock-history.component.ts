@@ -13,7 +13,8 @@ export class StockHistoryComponent implements OnInit {
   constructor(private getDataService: GetDataService) { }
 
   getStockHistory() {
-    this.getDataService.postData('http://localhost:3000/stockHistory', {NumberOfDays: 365, DataPeriod: 'Day', Symbol: 'AAPL'}).subscribe(data => {
+    this.getDataService.postData('http://localhost:3000/stockHistory', {NumberOfDays: 5, DataPeriod: 'Day', Symbol: 'NFLX'}).subscribe(data => {
+      data = JSON.parse(data)
       console.log(data);
     })
   }
