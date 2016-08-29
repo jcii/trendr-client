@@ -17,6 +17,8 @@ import { GetDataService } from '../../services/get-data.service'
 export class TrendDetailRootComponent implements OnInit {
   private subscription: Subscription
   trendId: any
+  stockInterval: any
+  public test: any = 'hello there'
 
   constructor(private getDataService: GetDataService, private activatedRoute: ActivatedRoute) {
     this.subscription = activatedRoute.params.subscribe(param => {
@@ -24,19 +26,22 @@ export class TrendDetailRootComponent implements OnInit {
     })
   }
 
-  ngOnInit() {
+
+  getStockData = () => {
     this.getDataService.getData('http://localhost:3000/realtimeStocks').subscribe(data => {
-      console.log(typeof data);
-      
       this.getDataService.postData('http://localhost:3000/realtimeStocks/updateDatabase', JSON.parse(data)).subscribe(finalData => {
         console.log(finalData)
       })
-      
     })
   }
 
+  ngOnInit() {
+    this.stockInterval = setInterval(this.getStockData, 3000)
+    }
+
   ngOnDestroy() {
     this.subscription.unsubscribe()
+    clearInterval(this.stockInterval);
   }
 
 }
