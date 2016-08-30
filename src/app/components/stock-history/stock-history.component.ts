@@ -14,9 +14,7 @@ export class StockHistoryComponent implements OnInit {
 
   getStockHistory() {
     this.getDataService.postData('http://localhost:3000/stockHistory', {NumberOfDays: 30, DataPeriod: 'Day', Symbol: 'NFLX'}).subscribe(data => {
-      // data = JSON.parse(data)
       console.log(data);
-      
     })
   }
 
