@@ -5,6 +5,7 @@ import { Response } from '@angular/http'
 import { Subscription } from 'rxjs/Rx'
 import { GetDataService } from '../../services/get-data.service'
 import { StockHistoryComponent } from '../stock-history'
+import { TestChartComponent } from '../test-chart'
 
 
 @Component({
@@ -12,7 +13,7 @@ import { StockHistoryComponent } from '../stock-history'
   selector: 'app-trend-detail-root',
   templateUrl: 'trend-detail-root.component.html',
   styleUrls: ['trend-detail-root.component.css'],
-  directives: [NavbarComponent, ROUTER_DIRECTIVES, StockHistoryComponent],
+  directives: [NavbarComponent, ROUTER_DIRECTIVES, StockHistoryComponent, TestChartComponent],
   providers: [GetDataService]
 })
 export class TrendDetailRootComponent implements OnInit {
