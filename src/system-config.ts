@@ -11,14 +11,20 @@
 
 const map: any = {
     'moment': 'vendor/moment/min/moment.min.js',
-    'ng2-bootstrap': 'vendor/ng2-bootstrap'
+    'ng2-bootstrap': 'vendor/ng2-bootstrap', 
+    "ng2-charts/ng2-charts": "node_modules/ng2-charts/ng2-charts"
+
 }; 
 
 /** User packages configuration. */
 const packages: any = {
   'vendor/ng2-bootstrap': {
       defaultExtension: 'js'
-  }
+  },
+  "node_modules/ng2-charts": {
+            format: 'register',
+            defaultExtension: 'js'
+        }
 };
 
 
@@ -41,6 +47,7 @@ const barrels: string[] = [
   // Thirdparty barrels.
   'rxjs',
   'ng2-bootstrap',
+  'ng2-charts',
 
   // App specific barrels.
   'app',
@@ -54,6 +61,7 @@ const barrels: string[] = [
   'app/components/trend-detail-root',
   'app/components/drop-down-button',
   'app/components/stock-history',
+  'app/components/test-chart',
   /** @cli-barrel */
 ];
 
@@ -72,7 +80,10 @@ System.config({
     'rxjs': 'vendor/rxjs',
     'main': 'main.js'
   },
-  packages: cliSystemConfigPackages
+  packages: cliSystemConfigPackages,
+  paths: {
+        "ng2-charts/ng2-charts": "node_modules/ng2-charts/ng2-charts"
+    }
 });
 
 // Apply the user's configuration.
