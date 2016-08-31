@@ -12,19 +12,15 @@
 const map: any = {
     'moment': 'vendor/moment/min/moment.min.js',
     'ng2-bootstrap': 'vendor/ng2-bootstrap', 
-    "ng2-charts/ng2-charts": "node_modules/ng2-charts/ng2-charts"
+    'ng2-charts': 'vendor/ng2-charts',
 
 }; 
 
 /** User packages configuration. */
 const packages: any = {
-  'vendor/ng2-bootstrap': {
-      defaultExtension: 'js'
-  },
-  "node_modules/ng2-charts": {
-            format: 'register',
-            defaultExtension: 'js'
-        }
+  'vendor/ng2-bootstrap': { defaultExtension: 'js' },  
+  'ng2-charts': { defaultExtension: 'js', main: 'ng2-charts.js' },
+  'chartjs': { defaultExtension: 'js', format: 'cjs' }
 };
 
 

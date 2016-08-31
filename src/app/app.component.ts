@@ -1,6 +1,6 @@
 import { Component, ViewContainerRef} from '@angular/core';
 import { ROUTER_DIRECTIVES } from '@angular/router'
-// import { CHART_DIRECTIVES } from 'ng2-charts/ng2-charts'
+import { CHART_DIRECTIVES } from 'ng2-charts/ng2-charts'
 
 @Component({
   moduleId: module.id,
