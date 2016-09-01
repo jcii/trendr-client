@@ -14,8 +14,6 @@ const map: any = {
     'ng2-bootstrap': 'vendor/ng2-bootstrap', 
     'ng2-charts': 'vendor/ng2-charts',
     'angular2-fontawesome': 'vendor/angular2-fontawesome'
-
-
 }; 
 
 /** User packages configuration. */
@@ -66,6 +64,7 @@ const barrels: string[] = [
   'app/components/test-chart',
   'app/bar-chart',
   'app/radar-chart',
+  'app/components/realtime-stock-chart',
   /** @cli-barrel */
 ];
 
