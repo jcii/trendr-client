@@ -18,7 +18,7 @@ export class LoginRootComponent implements OnInit {
   login(event, username, password) {
     event.preventDefault()
     let body = JSON.stringify({ username, password })
-    this.http.post('#', body, {headers: contentHeaders})
+    this.http.post('https://httpbin.org/post', body, {headers: contentHeaders})
       .subscribe(
         response => {
           console.log(response.json())
@@ -32,3 +32,4 @@ export class LoginRootComponent implements OnInit {
     this.router.navigate(['/home'])
   }
 }
+  
