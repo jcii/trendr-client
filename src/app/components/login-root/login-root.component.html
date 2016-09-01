@@ -9,18 +9,18 @@
             <img id="blender" src="trendr.png" alt="">
             <h1>trendr.</h1>
           </div>
-          <form role="form">
+          <form role="form" (submit)="login($event, username.value, password.value)">
             <div class="form-content">
               <div class="form-group">
-                <input type="text" ng-model="name" class="login-input form-control input-underline input-lg" id="" placeholder="Username">
+                <input #username type="text" ng-model="name" class="login-input form-control input-underline input-lg" id="" placeholder="Username">
               </div>
               <div class="form-group">
-                <input type="password" class="login-input form-control input-underline input-lg" id="" placeholder="Password">
+                <input #password type="password" class="login-input form-control input-underline input-lg" id="" placeholder="Password">
               </div>
             </div>
             <div class="btn-group" role="group" aria-label="Basic example">
-              <button type="button"  [routerLink]="['/home']" class="btn btn-outline-primary"><h4>Login</h4></button>
-              <button type="button" class="btn btn-outline-secondary"><h4>Register</h4></button>
+              <button type="button" class="btn btn-outline-primary" type="submit"><h4>Login</h4></button>
+              <button type="button" class="btn btn-outline-secondary" (click)="goToRegister()"><h4>Register</h4></button>
             </div>
           </form>
         </div>
