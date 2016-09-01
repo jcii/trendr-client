@@ -2,12 +2,21 @@
 background-color: black;
 border-width: 4px;
 border-color: -webkit-linear-gradient(to left, #DC2424 , #4A569D); /* Chrome 10-25, Safari 5.1-6 */
-border-color: linear-gradient(to left, #DC2424 , #4A569D); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-          
+border-color: linear-gradient(to left, #DC2424 , #4A569D); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */         
+}
+#login{
+opacity: 0.75;
 }
 .btn-outline-primary {
   color: #0275d8;
   background-image: none;
   background-color: transparent;
   border-color: #0275d8;
+}
+
+#loader{
+  /*background-color: green;*/
+}
+html {
+    height: 100vh;
 }
