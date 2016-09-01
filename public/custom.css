@@ -76,3 +76,12 @@ html {
 .card-container{
     border-radius: 15px;
 }
+#blender-loading{
+    width: 100%;
+    text-align: center;
+}
+#blender-loading > img {
+    margin-top: 20vh;
+    width: 150px;
+    padding-left:20px;
+}
