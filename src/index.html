@@ -3,8 +3,10 @@
 <head>
   <meta charset="utf-8">
   <title>Trendr</title>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+  <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.3/css/bootstrap.min.css" integrity="sha384-MIwDKRSSImVFAZCVLtU0LMDdON6KVCrZHyVQQj6e8wIEJkW4tvwqXrbMIya1vriY" crossorigin="anonymous">-->
+  <link rel="stylesheet" href="dash-style.css">
+  <link rel="stylesheet" href="custom.css">
+
   <base href="/">
 
   {{#unless environment.production}}
@@ -14,7 +16,7 @@
   <link rel="icon" type="image/x-icon" href="favicon.ico">
 </head>
 <body>
-  <app-root>Loading...</app-root>
+  <app-root><div class="loader"></div></app-root>
   
     {{#each scripts.polyfills}}
     <script src="{{.}}"></script>
@@ -25,5 +27,9 @@
       }).catch(console.error.bind(console));
     </script>
     <script src="app.js"></script>
+    <script src="three.js"></script>
+    <script src="canvasRender.js"></script>
+    <script src="Projector.js"></script>
+    <script src="animate.js"></script>
 </body>
 </html>
