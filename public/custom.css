@@ -1,11 +1,29 @@
+@font-face {
+    font-family: 'LeagueGothic';
+    src: url('/fonts/LeagueGothic-Regular.css');
+    font-weight: normal;
+    font-style: normal;
+}
 .black-card{
-background-color: black;
-border-width: 4px;
-border-color: -webkit-linear-gradient(to left, #DC2424 , #4A569D); /* Chrome 10-25, Safari 5.1-6 */
-border-color: linear-gradient(to left, #DC2424 , #4A569D); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */         
+  background-color: transparent;
+    border-radius: 25px;
+    border-width: 3px;
+  
 }
 #login{
-opacity: 0.75;
+/*opacity: .9;*/
+}
+#titleblock{
+   margin: auto;
+    width: 150px;
+    height: 150px;
+    background: transparent;
+    border: 10px solid transparent;
+    
+    -moz-border-image: -moz-linear-gradient(top, #FC913A 0%, #FF4E50 100%);
+    -webkit-border-image: -webkit-linear-gradient(top, #FC913A 0%, #FF4E50 100%);
+    border-image: linear-gradient(to bottom, #FC913A 0%, #FF4E50 100%);
+    border-image-slice: 1;
 }
 .btn-outline-primary {
   color: #0275d8;
