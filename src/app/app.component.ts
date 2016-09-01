@@ -7,7 +7,12 @@ import { LoginRootComponent } from './components/login-root'
   moduleId: module.id,
   selector: 'app-root',
   templateUrl: 'app.component.html',
-  styleUrls: ['app.component.css'],
+  // styleUrls: ['app.component.css'],
+  styles: [`
+  body{
+    background-color: green;
+  }
+  `],
   directives: [ROUTER_DIRECTIVES]
 })
 
