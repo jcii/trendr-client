@@ -17,10 +17,10 @@
                 <input type="password" class="form-control input-underline input-lg" id="" placeholder="Password">
               </div>
             </div>
-            <a class="btn rounded-btn" [routerLink]="['/home']"> Log in </a> &nbsp;
-            <button type="button" class="btn btn-outline-primary">Primary</button>
-
-            <a type="submit" class="btn rounded-btn" [routerLink]="['/signup']">Register</a>
+            <div class="btn-group" role="group" aria-label="Basic example">
+              <button type="button"  [routerLink]="['/home']" class="btn btn-outline-primary"><h4>Login</h4></button>
+              <button type="button" class="btn btn-outline-secondary"><h4>Register</h4></button>
+            </div>
           </form>
         </div>
       </div>
