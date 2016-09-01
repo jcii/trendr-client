@@ -1,4 +1,5 @@
-if(window.location.href.split('/')[2] == "localhost:4200"){
+console.log(window.location.href.split("/"))
+if(window.location.href.split('/')[3] == ""){
 var mouseX = 0, mouseY = 0,
 
 			windowHalfX = window.innerWidth / 2,
@@ -18,7 +19,7 @@ var mouseX = 0, mouseY = 0,
 				var container, separation = 100, amountX = 50, amountY = 50,
 				particles, particle;
 
-				container = document.createElement('div');
+				container = document.createElement("div")
 				document.body.appendChild(container);
 
 				camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 1, 10000 );
@@ -36,7 +37,7 @@ var mouseX = 0, mouseY = 0,
 				var PI2 = Math.PI * 2;
 				var material = new THREE.SpriteCanvasMaterial( {
 
-					color: 0xffffff,
+					color: 0xFF4E50,
 					program: function ( context ) {
 
 						context.beginPath();
@@ -137,10 +138,15 @@ var mouseX = 0, mouseY = 0,
 			}
 
 			function render() {
+				var timer = Date.now() * 0.0002;
 
-				camera.position.x += ( mouseX - camera.position.x ) * .05;
-				camera.position.y += ( - mouseY + 200 - camera.position.y ) * .05;
-				camera.lookAt( scene.position );
+					camera.position.x = Math.cos( timer ) * 200;
+					camera.position.z = Math.sin( timer ) * 200;
+					camera.position.y = Math.sin( timer ) * 200;
+					camera.lookAt( scene.position );
+				// camera.position.x += ( mouseX - camera.position.x ) * .05;
+				// camera.position.y += ( - mouseY + 200 - camera.position.y ) * .05;
+				// camera.lookAt( scene.position );
 
 				renderer.render( scene, camera );
 

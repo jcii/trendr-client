@@ -19,7 +19,12 @@ module.exports = function(defaults) {
       'moment/min/moment.min.js',
       'ng2-bootstrap/**/*.+(js)',
       'ng2-charts/**/*.+(js|js.map)',
-      'chart.js/dist/Chart.min.js'
+      'chart.js/dist/Chart.min.js',
+      'angular2-fontawesome/*.+(js|js.map)',
+      'angular2-fontawesome/**/*.+(js|js.map)',
+      'angular2-fontawesome/**/**/*.+(js|js.map)',
+      'font-awesome/css/*.*',
+      'font-awesome/fonts/*.*'
     ]
   });
 };

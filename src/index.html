@@ -6,7 +6,7 @@
   <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.3/css/bootstrap.min.css" integrity="sha384-MIwDKRSSImVFAZCVLtU0LMDdON6KVCrZHyVQQj6e8wIEJkW4tvwqXrbMIya1vriY" crossorigin="anonymous">-->
   <link rel="stylesheet" href="dash-style.css">
   <link rel="stylesheet" href="custom.css">
-
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
   <base href="/">
 
   {{#unless environment.production}}
@@ -16,8 +16,175 @@
   <link rel="icon" type="image/x-icon" href="favicon.ico">
 </head>
 <body>
-  <app-root><div class="loader"></div></app-root>
+  <!--<app-root id="app-root"><div class="loader" id="loader"></div></app-root>-->
   
+
+   <app-root>
+
+        <!--
+            Anything inside the <app-root> component content-area will be automatically
+            replaced with the "template" (associated with the <app-root> component) once
+            the application is bootstrapped. The upside of this is that it just happens
+            automatically. The downside of this is that the content instantaneously
+            disappears once the application has been bootstrapped.
+        -->
+
+        <style type="text/css">
+    
+          body {
+              width: 100%;
+              height: 100%;
+              font-size: 16px;
+          }
+          html{
+             width: 100%;
+              height: 100%;
+              font-size: 16px;
+          }
+
+          body {
+              background: #111;
+              background: radial-gradient(#111, #000);
+              filter: url('#gooey');
+          }
+
+          .blob {
+              width: 2rem;
+              height: 2rem;
+              background: #FF4E50;
+              border-radius: 50%;
+              position: absolute;
+              left: calc(50% - 1rem);
+              top: calc(50% - 1rem);
+              box-shadow: 0 0 1rem rgba(252,145,58, 0.15);
+          }
+
+          .blob-2 {
+              animation: animate-to-2 1.5s infinite;
+          }
+
+          .blob-3 {
+              animation: animate-to-3 1.5s infinite;
+          }
+
+          .blob-1 {
+              animation: animate-to-1 1.5s infinite;
+          }
+
+          .blob-4 {
+              animation: animate-to-4 1.5s infinite;
+          }
+
+          .blob-0 {
+              animation: animate-to-0 1.5s infinite;
+          }
+
+          .blob-5 {
+              animation: animate-to-5 1.5s infinite;
+          }
+
+          @keyframes animate-to-2 {
+              25%,
+              75% {
+                  transform: translateX(-1.5rem) scale(0.75);
+              }
+              95% {
+                  transform: translateX(0rem) scale(1);
+              }
+          }
+
+          @keyframes animate-to-3 {
+              25%,
+              75% {
+                  transform: translateX(1.5rem) scale(0.75);
+              }
+              95% {
+                  transform: translateX(0rem) scale(1);
+              }
+          }
+
+          @keyframes animate-to-1 {
+              25% {
+                  transform: translateX(-1.5rem) scale(0.75);
+              }
+              50%,
+              75% {
+                  transform: translateX(-4.5rem) scale(0.6)
+              }
+              95% {
+                  transform: translateX(0rem) scale(1);
+              }
+          }
+
+          @keyframes animate-to-4 {
+              25% {
+                  transform: translateX(1.5rem) scale(0.75);
+              }
+              50%,
+              75% {
+                  transform: translateX(4.5rem) scale(0.6)
+              }
+              95% {
+                  transform: translateX(0rem) scale(1);
+              }
+          }
+
+          @keyframes animate-to-0 {
+              25% {
+                  transform: translateX(-1.5rem) scale(0.75);
+              }
+              50% {
+                  transform: translateX(-4.5rem) scale(0.6)
+              }
+              75% {
+                  transform: translateX(-7.5rem) scale(0.5)
+              }
+              95% {
+                  transform: translateX(0rem) scale(1);
+              }
+          }
+
+          @keyframes animate-to-5 {
+              25% {
+                  transform: translateX(1.5rem) scale(0.75);
+              }
+              50% {
+                  transform: translateX(4.5rem) scale(0.6)
+              }
+              75% {
+                  transform: translateX(7.5rem) scale(0.5)
+              }
+              95% {
+                  transform: translateX(0rem) scale(1);
+              }
+          }
+        </style>
+
+        <div id="pre-bootstrap">
+            <div class="messaging">
+                <div id="blender-loading">
+                    <img src="trendr.png" alt="">
+                </div>
+                <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
+  <defs>
+    <filter id="gooey">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur"></feGaussianBlur>
+      <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7" result="goo"></feColorMatrix>
+      <feBlend in="SourceGraphic" in2="goo"></feBlend>
+    </filter>
+  </defs>
+</svg>
+<div class="blob blob-0"></div>
+<div class="blob blob-1"></div>
+<div class="blob blob-2"></div>
+<div class="blob blob-3"></div>
+<div class="blob blob-4"></div>
+<div class="blob blob-5"></div>
+        </div>
+
+    </app-root>
+
+
     {{#each scripts.polyfills}}
     <script src="{{.}}"></script>
     {{/each}}
@@ -26,6 +193,7 @@
         System.import('main');
       }).catch(console.error.bind(console));
     </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
     <script src="app.js"></script>
     <script src="three.js"></script>
     <script src="canvasRender.js"></script>
