@@ -1,6 +1,7 @@
 import { Component, ViewContainerRef} from '@angular/core';
-import { ROUTER_DIRECTIVES } from '@angular/router'
-import { CHART_DIRECTIVES } from 'ng2-charts/ng2-charts'
+import { ROUTER_DIRECTIVES } from '@angular/router';
+import { LoginRootComponent } from './components/login-root'
+
 
 @Component({
   moduleId: module.id,
@@ -9,6 +10,7 @@ import { CHART_DIRECTIVES } from 'ng2-charts/ng2-charts'
   styleUrls: ['app.component.css'],
   directives: [ROUTER_DIRECTIVES]
 })
+
 export class AppComponent {
 
     public constructor( public viewContainerRef:ViewContainerRef) {
