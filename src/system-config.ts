@@ -13,7 +13,8 @@ const map: any = {
     'moment': 'vendor/moment/min/moment.min.js',
     'ng2-bootstrap': 'vendor/ng2-bootstrap', 
     'ng2-charts': 'vendor/ng2-charts',
-    'angular2-fontawesome': 'vendor/angular2-fontawesome'
+    'angular2-fontawesome': 'vendor/angular2-fontawesome',
+    'angular2-jwt': 'vendor/angular2-jwt'
 
 
 }; 
@@ -23,9 +24,8 @@ const packages: any = {
   'vendor/ng2-bootstrap': { defaultExtension: 'js' },  
   'ng2-charts': { defaultExtension: 'js', main: 'ng2-charts.js' },
   'chartjs': { defaultExtension: 'js', format: 'cjs' },
-  'angular2-fontawesome':{
-    defaultExtension: 'js'
-  }
+  'angular2-fontawesome':{ defaultExtension: 'js' },
+  'angular2-jwt': { main: 'angular2-jwt.js' },
 };
 
 
