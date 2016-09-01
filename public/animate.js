@@ -37,7 +37,7 @@ var mouseX = 0, mouseY = 0,
 				var PI2 = Math.PI * 2;
 				var material = new THREE.SpriteCanvasMaterial( {
 
-					color: 0xffffff,
+					color: 0xFF4E50,
 					program: function ( context ) {
 
 						context.beginPath();
