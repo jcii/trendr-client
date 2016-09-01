@@ -6,6 +6,7 @@ import { Subscription } from 'rxjs/Rx'
 import { GetDataService } from '../../services/get-data.service'
 import { StockHistoryComponent } from '../stock-history'
 import { TestChartComponent } from '../test-chart'
+import { RealtimeStockChartComponent } from '../realtime-stock-chart'
 
 
 @Component({
@@ -13,14 +14,12 @@ import { TestChartComponent } from '../test-chart'
   selector: 'app-trend-detail-root',
   templateUrl: 'trend-detail-root.component.html',
   styleUrls: ['trend-detail-root.component.css'],
-  directives: [NavbarComponent, ROUTER_DIRECTIVES, StockHistoryComponent, TestChartComponent],
+  directives: [NavbarComponent, ROUTER_DIRECTIVES, StockHistoryComponent, TestChartComponent, RealtimeStockChartComponent],
   providers: [GetDataService]
 })
 export class TrendDetailRootComponent implements OnInit {
   private subscription: Subscription
   trendId: any
-  stockInterval: any
-  public test: any = 'hello there'
 
   constructor(private getDataService: GetDataService, private activatedRoute: ActivatedRoute) {
     this.subscription = activatedRoute.params.subscribe(param => {
@@ -28,22 +27,12 @@ export class TrendDetailRootComponent implements OnInit {
     })
   }
 
-
-  getStockData = () => {
-    this.getDataService.getData('http://localhost:3000/realtimeStocks').subscribe(data => {
-      this.getDataService.postData('http://localhost:3000/realtimeStocks/updateDatabase', JSON.parse(data)).subscribe(finalData => {
-        console.log(finalData)
-      })
-    })
-  }
-
   ngOnInit() {
-    // this.stockInterval = setInterval(this.getStockData, 5000)
     }
 
   ngOnDestroy() {
     this.subscription.unsubscribe()
-    clearInterval(this.stockInterval);
+    // clearInterval(this.stockInterval);
   }
 
 }

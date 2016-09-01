@@ -15,8 +15,6 @@ const map: any = {
     'ng2-charts': 'vendor/ng2-charts',
     'angular2-fontawesome': 'vendor/angular2-fontawesome',
     'angular2-jwt': 'vendor/angular2-jwt'
-
-
 }; 
 
 /** User packages configuration. */
@@ -66,6 +64,7 @@ const barrels: string[] = [
   'app/components/test-chart',
   'app/bar-chart',
   'app/radar-chart',
+  'app/components/realtime-stock-chart',
   /** @cli-barrel */
 ];
 
