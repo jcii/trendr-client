@@ -64,6 +64,7 @@ const barrels: string[] = [
   'app/components/test-chart',
   'app/bar-chart',
   'app/radar-chart',
+  'app/components/realtime-stock-chart',
   /** @cli-barrel */
 ];
 
