@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ApplicationRef, ChangeDetectorRef } from '@angular/core';
 import { GetDataService } from '../../services/get-data.service'
 import {CORE_DIRECTIVES, FORM_DIRECTIVES, NgClass} from '@angular/common';
 import {CHART_DIRECTIVES} from 'ng2-charts/ng2-charts';
@@ -8,17 +8,24 @@ import {CHART_DIRECTIVES} from 'ng2-charts/ng2-charts';
   selector: 'app-realtime-stock-chart',
   templateUrl: 'realtime-stock-chart.component.html',
   styleUrls: ['realtime-stock-chart.component.css'],
-  directives: [CHART_DIRECTIVES, NgClass, CORE_DIRECTIVES, FORM_DIRECTIVES]
+  directives: [CHART_DIRECTIVES, NgClass, CORE_DIRECTIVES, FORM_DIRECTIVES],
+  providers: []
 })
 export class RealtimeStockChartComponent implements OnInit {
-  dates: any[] = ['jan']
-  prices: number[] = [1]
+  dates: any[] = []
+  prices: number[] = []
   stockInterval: any
   lineChartDataArray: Array<any> = [
     {data: this.prices, label: 'Stock Price Yo'}
   ]
 
-  constructor(private getDataService: GetDataService) { }
+  constructor(private getDataService: GetDataService, private ar: ApplicationRef, private cdr: ChangeDetectorRef) { }
+
+  changeData() {
+    console.log('changing data');
+    this.prices.push(50)
+    this.dates.push('thursday')
+  }
 
 
     getStockData = () => {
@@ -26,16 +33,17 @@ export class RealtimeStockChartComponent implements OnInit {
       this.getDataService.postData('http://localhost:3000/realtimeStocks/updateDatabase', JSON.parse(data)).subscribe(finalData => {
         this.dates = finalData.map(elem => new Date(Number(elem.timestamp)))
         this.prices = finalData.map(elem => elem.price)
-        this.lineChartDataArray = [{data: this.prices, label: 'stock price yo'}]
-        console.log(this.dates)
-        console.log(this.prices)
+        this.lineChartData = [{data: this.prices, label: 'stock price yo'}]
+        this.lineChartLabels = this.dates
       })
     })
   }
 
 
     // lineChart
-  public lineChartData:Array<any> = this.lineChartDataArray
+  public lineChartData:Array<any> = [
+    {data: this.prices, label: 'Stock Price Yo'}
+  ]
   public lineChartLabels:Array<any> = this.dates;
   public lineChartOptions:any = {
     animation: false,
@@ -43,7 +51,7 @@ export class RealtimeStockChartComponent implements OnInit {
   };
   public lineChartColours:Array<any> = [
     { // grey
-      backgroundColor: 'rgba(148,159,177,0.2)',
+      backgroundColor: '#00E461',
       borderColor: 'rgba(148,159,177,1)',
       pointBackgroundColor: 'rgba(148,159,177,1)',
       pointBorderColor: '#fff',
