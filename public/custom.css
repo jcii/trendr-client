@@ -18,7 +18,7 @@
 }
 #login{
 /*opacity: .9;*/
-margin-top: 8vh;
+/*margin-top: 8vh;*/
 }
 #titleblock{
     text-align: center;
@@ -55,8 +55,37 @@ margin-top: 8vh;
 .btn-outline-secondary:hover {
   color: white;
   background-color: #FF4E50;
-  padding: 
+  padding: 25px;
 }
+.btn-outline-blue {
+  font-size: 36px;
+  color: white;
+  background-image: none;
+  background-color: transparent;
+  border-color: #196EEF;
+  padding: 15px;
+}
+.btn-outline-blue:hover {
+  font-size: 36px;
+  color: white;
+  background-color: #196EEF;
+  padding: 15px;
+}
+.btn-outline-white {
+  font-size: 36px;
+  color: white;
+  background-image: none;
+  background-color: transparent;
+  border-color: white;
+  padding: 15px;
+}
+.btn-outline-white:hover {
+  font-size: 36px;
+  color: #00ACEE;
+  background-color: white;
+  padding: 15px;
+}
+
 
 
 #loader{
@@ -84,4 +113,14 @@ html {
     margin-top: 20vh;
     width: 150px;
     padding-left:20px;
+}
+.button-icon{
+    font-size: 54px;
+}
+
+.input-underline-danger {
+    border-color: #FF4E50 !important;
+}
+.secondary-text{
+    color: #FC913A;
 }

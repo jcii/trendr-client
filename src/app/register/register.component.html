@@ -1,0 +1,85 @@
+<div id="loader-div-test">
+ <div class="card-container">
+    <div class="login-page" id="login-page">
+  <div class="row">
+    <div class="col-lg-4 col-lg-offset-4">
+      <div class="card black-card" id="login">
+        <div class="card-block">
+          <div id="titleblock">
+            <img id="blender" src="trendr.png" alt="">
+            <h1>trendr.</h1>
+            <h5>Please register.</h5>
+          </div>
+          <form 
+            name="registerUser"
+            #f="ngForm"
+            novalidate
+            autocomplete="off"
+            (ngSubmit)="userRegister(f.value, f.valid)">
+            <div class="form-content">
+              <div class="form-group">
+                <input
+                  name="username" 
+                  #username="ngModel"
+                  [(ngModel)]="user.username"  
+                  required
+                  minlength="5"
+                  class="login-input form-control input-underline input-lg" 
+                  [class.input-underline-danger]="!username.valid && !username.pristine"
+                  type="text" 
+                  (keyup)="checkUsername(username.value)"
+                  placeholder="Username">
+                  <small class="secondary-text" [hidden]="username.valid || (username.pristine && !f.submitted)">
+                      Username is required (minimum 5 characters).
+                  </small>
+                  <small class="secondary-text" [hidden]="!userExists">
+                      Username has already been taken.
+                  </small>
+              </div>
+              <div class="form-group">
+                <input 
+                  name="password"
+                  #password="ngModel"
+                  [(ngModel)]="user.password" 
+                  type="password" 
+                  required
+                  minlength="8"
+                  class="login-input form-control input-underline input-lg" 
+                  [class.input-underline-danger]="!password.valid && !password.pristine"
+                  placeholder="Password">
+                    <small class="secondary-text" [hidden]="password.valid || (password.pristine && !f.submitted)">
+                        Password is required (minimum 8 characters).
+                    </small>
+              </div>
+              <div class="form-group">
+                <input
+                  name="passconf"
+                  #passconf="ngModel"
+                  [(ngModel)]="user.passconf" 
+                  validateEqual="password"
+                  required
+                  minlength="8"
+                  type="password" 
+                  class="login-input form-control input-underline input-lg"
+                  [class.input-underline-danger]="!passconf.valid && !passconf.pristine"
+                  placeholder="Confirm Password">
+                    <small class="secondary-text" [hidden]="passconf.valid || (passconf.pristine && !f.submitted)">
+                        Passwords must match.
+                    </small>
+              </div>
+            </div>
+
+            <div class="btn-group" role="group" aria-label="Basic example">
+              <a class="btn btn-outline-primary" (click)="goToLogin()"><h4>Login</h4></a>
+              <button [disabled]="!f.valid || userExists" type="button" class="btn btn-outline-secondary" type="submit"><h4>Register</h4></button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+ </div>
+</div>
+
+<script src="animate.js"></script>

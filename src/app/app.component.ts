@@ -2,7 +2,6 @@ import { Component, ViewContainerRef} from '@angular/core';
 import { ROUTER_DIRECTIVES } from '@angular/router';
 import { LoginRootComponent } from './components/login-root'
 
-
 @Component({
   moduleId: module.id,
   selector: 'app-root',
@@ -17,9 +16,7 @@ import { LoginRootComponent } from './components/login-root'
 })
 
 export class AppComponent {
-
     public constructor( public viewContainerRef:ViewContainerRef) {
-
     this.viewContainerRef = viewContainerRef;
-    }
+  }
 }
