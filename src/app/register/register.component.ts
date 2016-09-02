@@ -15,7 +15,8 @@ import { EqualValidator } from '../directives/equal-validatior.directive'
 
 export class RegisterComponent implements OnInit {
   public user: User
-  
+  public userExists: boolean
+
   ngOnInit() { 
     this.user = {
       username: '',
@@ -24,19 +25,28 @@ export class RegisterComponent implements OnInit {
     }
   }
   constructor(private _userService:UserService, private _router: Router ) { }
-  userRegister(event, user: User, isValid: boolean) {    
-    console.log(user, isValid)
-
-    // event.preventDefault()
-    // this.userService.registerUser(user)
-    //   .subscribe(
-    //     response => {
-    //       console.log(response.json());
-    //     },
-    //     error => {
-    //       console.log(error);
-    //     }
-    //   )
+  userRegister(user: User, isValid: boolean) { 
+    delete user.passconf   
+    this._userService.registerUser(user)
+      .subscribe(
+        response => {
+          console.log(response);
+        },
+        error => {
+          console.log(error);
+        }
+      )
+  }
+  checkUsername(username) {
+    this._userService.checkIfUserExists(username)
+      .subscribe(
+        res => {
+          res.json().length > 0 ? this.userExists = true : this.userExists = false
+        },
+        error => {
+          console.log(error)
+        }
+      )
   }
   goToLogin(event){
     this._router.navigate(['/'])

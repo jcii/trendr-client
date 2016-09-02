@@ -6,9 +6,11 @@ import 'rxjs/Rx'
 @Injectable()
 
 export class UserService {
-  constructor(private http: Http) { }
+  constructor(private _http: Http) { }
   registerUser(user) { 
-    return this.http.post('http://127.0.0.1:3000/register', user, { headers: contentHeaders })
+    return this._http.post('http://127.0.0.1:3000/register', user, { headers: contentHeaders })
   }
-
+  checkIfUserExists(username) {
+    return this._http.post('http://127.0.0.1:3000/register/userCheck', { username }, { headers: contentHeaders })
+  }
 }
