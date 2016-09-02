@@ -5,9 +5,8 @@ import { TrendDetailRootComponent } from './components/trend-detail-root'
 import { RegisterComponent } from './register'
 
 const APP_ROUTES = [
-    { path: '', component: LoginRootComponent }, 
-    { path: 'user', component: LoginRootComponent },
-    { path: 'home', component: HomeRootComponent },
+    { path: 'login', component: LoginRootComponent }, 
+    { path: '', component: HomeRootComponent },
     { path: 'trend/:trendId', component: TrendDetailRootComponent },
     { path: 'register', component: RegisterComponent }
 ]

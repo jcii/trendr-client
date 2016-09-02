@@ -3,7 +3,20 @@
 // import Renderer = THREE.Renderer
 // import WebGLRenderer = THREE.WebGLRenderer
 // import Camera = THREE.Camera
-// import SpriteCanvasMaterial = THREE.SpriteMaterial
+
+
+// THREE.SpriteCanvasMaterial = function ( parameters ) {
+
+// 	THREE.Material.call( this );
+
+// 	this.type = 'SpriteCanvasMaterial';
+
+// 	this.color = new THREE.Color( 0xffffff );
+// 	this.program = function ( context, color ) {};
+
+// 	this.setValues( parameters );
+
+// };
 
 // @Injectable()
 // export class RenderService {

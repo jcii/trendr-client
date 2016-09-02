@@ -4,19 +4,26 @@ import { CORE_DIRECTIVES } from '@angular/common'
 import { Http, Headers } from '@angular/http'
 import { contentHeaders } from '../../common/headers'
 import { User } from '../../interfaces/user.interface'
+import { BrowserDomAdapter } from '@angular/platform-browser/src/browser/browser_adapter';
 
 @Component({
   moduleId: module.id,
   selector: 'app-login-root',
   templateUrl: 'login-root.component.html',
   styleUrls: ['login-root.component.css'],
-  directives: [ROUTER_DIRECTIVES, CORE_DIRECTIVES]
+  directives: [ROUTER_DIRECTIVES, CORE_DIRECTIVES],
+  providers: [BrowserDomAdapter]
 })
 
 export class LoginRootComponent implements OnInit {
   public user: User
-  constructor(public router:Router, public http:Http) { }
+  constructor(
+    private _router:Router, 
+    private _http:Http, 
+    private _browserDomAdapter: BrowserDomAdapter) { }
+    
   ngOnInit() {
+    this._browserDomAdapter.addClass(this._browserDomAdapter.query("div.animate-hide"), "animate-show")
     this.user = {
       username: '',
       password: '',
@@ -24,7 +31,7 @@ export class LoginRootComponent implements OnInit {
     }
   }
   login(user: User) {
-    this.http.post('https://httpbin.org/post', user, {headers: contentHeaders})
+    this._http.post('https://httpbin.org/post', user, {headers: contentHeaders})
       .subscribe(
         response => {
           console.log(response.json())
@@ -35,7 +42,7 @@ export class LoginRootComponent implements OnInit {
       )
   }
   goToRegister(event) {
-    this.router.navigate(['/register'])
+    this._router.navigate(['/register'])
   }
 }
   

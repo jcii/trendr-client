@@ -124,3 +124,9 @@ html {
 .secondary-text{
     color: #FC913A;
 }
+.animate-hide {
+    display:none;
+}
+.animate-show {
+    display:block;
+}
