@@ -56,7 +56,7 @@ export class RealtimeStockChartComponent implements OnInit {
   public lineChartType:string = 'line';
 
   ngOnInit() {
-    // this.stockInterval = setInterval(this.getStockData, 5000) 
+    this.stockInterval = setInterval(this.getStockData, 10000) 
   }
 
 }
