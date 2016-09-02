@@ -117,3 +117,8 @@ html {
 .button-icon{
     font-size: 54px;
 }
+
+.input-underline-danger {
+    color: red !important;
+    border-color: red !important;
+}

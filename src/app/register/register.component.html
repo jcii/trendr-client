@@ -9,17 +9,18 @@
             <img id="blender" src="trendr.png" alt="">
             <h1>trendr.</h1>
             <h5>Please register.</h5>
+            <div id="message" [style.display]="error.isError ? null : error.display"  [innerHtml]="error.message"></div>
           </div>
           <form role="form" (submit)="userRegister($event, username.value, password.value, passwordconfirm.value)">
             <div class="form-content">
               <div class="form-group">
-                <input #username type="text" ng-model="name" class="login-input form-control input-underline input-lg" id="" placeholder="Username">
+                <input [ngModel]="user.username"  #username type="text" ng-model="name" class="login-input form-control input-underline input-lg" id="" placeholder="Username">
               </div>
               <div class="form-group">
-                <input #password type="password" class="login-input form-control input-underline input-lg" id="" placeholder="Password">
+                <input [ngModel]="user.password" #password type="password" class="login-input form-control input-underline input-lg" id="" placeholder="Password">
               </div>
               <div class="form-group">
-                <input #passwordconfirm type="password" class="login-input form-control input-underline input-lg" id="" placeholder="Confirm Password">
+                <input (ngModelChange)="validatePass()" [ngModel]="user.passconf" [class.input-underline-danger]="isPasswordMismatch" #passwordconfirm type="password" class="login-input form-control input-underline input-lg" id="" placeholder="Confirm Password">
               </div>
             </div>
             <div class="btn-group" role="group" aria-label="Basic example">
