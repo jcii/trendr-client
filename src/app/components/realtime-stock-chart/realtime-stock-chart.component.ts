@@ -8,8 +8,7 @@ import {CHART_DIRECTIVES} from 'ng2-charts/ng2-charts';
   selector: 'app-realtime-stock-chart',
   templateUrl: 'realtime-stock-chart.component.html',
   styleUrls: ['realtime-stock-chart.component.css'],
-  directives: [CHART_DIRECTIVES, NgClass, CORE_DIRECTIVES, FORM_DIRECTIVES],
-  providers: []
+  directives: [CHART_DIRECTIVES, NgClass, CORE_DIRECTIVES, FORM_DIRECTIVES]
 })
 export class RealtimeStockChartComponent implements OnInit {
   dates: any[] = []
@@ -20,12 +19,6 @@ export class RealtimeStockChartComponent implements OnInit {
   ]
 
   constructor(private getDataService: GetDataService, private ar: ApplicationRef, private cdr: ChangeDetectorRef) { }
-
-  changeData() {
-    console.log('changing data');
-    this.prices.push(50)
-    this.dates.push('thursday')
-  }
 
 
     getStockData = () => {
@@ -63,7 +56,7 @@ export class RealtimeStockChartComponent implements OnInit {
   public lineChartType:string = 'line';
 
   ngOnInit() {
-    this.stockInterval = setInterval(this.getStockData, 5000) 
+    // this.stockInterval = setInterval(this.getStockData, 5000) 
   }
 
 }

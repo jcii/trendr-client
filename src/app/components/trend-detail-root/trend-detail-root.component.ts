@@ -7,6 +7,7 @@ import { GetDataService } from '../../services/get-data.service'
 import { StockHistoryComponent } from '../stock-history'
 import { TestChartComponent } from '../test-chart'
 import { RealtimeStockChartComponent } from '../realtime-stock-chart'
+import { GenLineChartComponent } from '../gen-line-chart'
 
 
 @Component({
@@ -14,7 +15,12 @@ import { RealtimeStockChartComponent } from '../realtime-stock-chart'
   selector: 'app-trend-detail-root',
   templateUrl: 'trend-detail-root.component.html',
   styleUrls: ['trend-detail-root.component.css'],
-  directives: [NavbarComponent, ROUTER_DIRECTIVES, StockHistoryComponent, TestChartComponent, RealtimeStockChartComponent],
+  directives: [NavbarComponent, 
+    ROUTER_DIRECTIVES, 
+    StockHistoryComponent, 
+    TestChartComponent, 
+    RealtimeStockChartComponent, 
+    GenLineChartComponent],
   providers: [GetDataService]
 })
 export class TrendDetailRootComponent implements OnInit {

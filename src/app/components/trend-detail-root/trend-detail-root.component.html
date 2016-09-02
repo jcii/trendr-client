@@ -8,3 +8,9 @@
 <app-test-chart></app-test-chart>
 
 <app-realtime-stock-chart></app-realtime-stock-chart>
+
+<hr>
+
+<app-gen-line-chart [lineChartData]="[
+    {data: [9,8,7,6,5], label: 'Stock Price Yo'}
+  ]" [lineChartLabels]="['this', 'better', 'work', 'mo', 'fo']"></app-gen-line-chart>
