@@ -1,67 +1,44 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router'
 import { UserService } from '../services/user.service'
+import { User } from '../interfaces/user.interface'
+import { EqualValidator } from '../directives/equal-validatior.directive'
 
 @Component({
   moduleId: module.id,
   selector: 'app-register',
   templateUrl: 'register.component.html',
   styleUrls: ['register.component.css'],
-  providers: [UserService]
+  providers: [UserService],
+  directives: [EqualValidator]
 })
 
 export class RegisterComponent implements OnInit {
-  user = {
-    password: '',
-    passconf: '', 
-    username: ''
+  public user: User
+  
+  ngOnInit() { 
+    this.user = {
+      username: '',
+      password: '',
+      passconf: ''
+    }
   }
-  error = {
-    message: '',
-    isError: false,
-    display: "none"
-  }
-  isPasswordMismatch = false
-  isPasswordShort = false
+  constructor(private _userService:UserService, private _router: Router ) { }
+  userRegister(event, user: User, isValid: boolean) {    
+    console.log(user, isValid)
 
-  constructor( private userService:UserService ) { }
-  ngOnInit() { }
-  userRegister(event, user, password, passconfirm) {    
-    event.preventDefault()
-    if(this.validatePassMatch(password, passconfirm)){
-      this.isPasswordMismatch = false
-      this.error.isError = false
-      console.log("password match");
-      
-    } else {
-      console.log("pas mismatch");
-      this.isPasswordMismatch = true
-      this.error.isError = true
-      this.error.message = "Password Mismatch"
-      
-    }
-    this.userService.registerUser({ user, password})
-      .subscribe(
-        response => {
-          console.log(response.json());
-        },
-        error => {
-          console.log(error);
-        }
-      )
+    // event.preventDefault()
+    // this.userService.registerUser(user)
+    //   .subscribe(
+    //     response => {
+    //       console.log(response.json());
+    //     },
+    //     error => {
+    //       console.log(error);
+    //     }
+    //   )
   }
-  validatePass(){
-    if(this.validatePassMatch(this.user.password, this.user.passconf)){
-      console.log(this.user.passconf);
-      
-      console.log("pass matching");
-    }
-    console.log("validate");
-    
-  }
-  validatePassMatch(pass: String, passconf: String) {
-    return pass === passconf
-  }
-  validatePassLength(pass: String) {
-    return pass.length >= 6
+  goToLogin(event){
+    this._router.navigate(['/'])
   }
 }

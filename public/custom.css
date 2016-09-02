@@ -18,7 +18,7 @@
 }
 #login{
 /*opacity: .9;*/
-margin-top: 8vh;
+/*margin-top: 8vh;*/
 }
 #titleblock{
     text-align: center;
@@ -119,6 +119,8 @@ html {
 }
 
 .input-underline-danger {
-    color: red !important;
-    border-color: red !important;
+    border-color: #FF4E50 !important;
+}
+.secondary-text{
+    color: #FC913A;
 }
