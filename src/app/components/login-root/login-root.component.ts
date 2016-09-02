@@ -3,6 +3,9 @@ import { Router, ROUTER_DIRECTIVES } from '@angular/router';
 import { CORE_DIRECTIVES, FORM_DIRECTIVES } from '@angular/common'
 import { Http, Headers } from '@angular/http'
 import { contentHeaders } from '../../common/headers'
+// import * as woot from 'angular2-ui-switch'
+// console.log(woot);
+
 
 @Component({
   moduleId: module.id,
@@ -29,7 +32,7 @@ export class LoginRootComponent implements OnInit {
       )
   }
   goToRegister(event) {
-    this.router.navigate(['/home'])
+    this.router.navigate(['/register'])
   }
 }
   
