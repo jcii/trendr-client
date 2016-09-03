@@ -1,4 +1,4 @@
-if (window.location.href.split('/')[3] == "login") {
+// if (window.location.href.split('/')[3] == "login" || "") {
 	var mouseX = 0,
 		mouseY = 0,
 
@@ -155,4 +155,4 @@ if (window.location.href.split('/')[3] == "login") {
 		renderer.render(scene, camera);
 
 	}
-}
+// }

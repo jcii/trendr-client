@@ -210,6 +210,7 @@ footer h4, footer h6 {
 }
 
 header {
+    height:100vh;
     position: relative;
     min-height: auto;
     text-align: center;
