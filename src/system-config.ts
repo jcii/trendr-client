@@ -70,6 +70,7 @@ const barrels: string[] = [
   'app/register',
   'app/components/gen-line-chart',
   'app/components/gen-bar-chart',
+  'app/sidebar',
   /** @cli-barrel */
 ];
 
