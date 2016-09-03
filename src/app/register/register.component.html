@@ -25,7 +25,7 @@
                   required
                   minlength="5"
                   class="login-input form-control input-underline input-lg" 
-                  [class.input-underline-danger]="!username.valid && !username.pristine"
+                  [class.input-underline-danger]="!username.valid && !username.pristine || userExists"
                   type="text" 
                   (keyup)="checkUsername(username.value)"
                   placeholder="Username">

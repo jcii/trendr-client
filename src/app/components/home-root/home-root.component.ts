@@ -3,7 +3,8 @@ import { NavbarComponent } from '../navbar'
 import { ModalDemoComponent } from '../test-modal'
 import { TestChartComponent } from '../test-chart'
 import { BarChartComponent } from '../../bar-chart'
-import {  RadarChartComponent } from '../../radar-chart'
+import { RadarChartComponent } from '../../radar-chart'
+import { SidebarComponent } from '../../sidebar'
 
 @Component({
   moduleId: module.id,
@@ -14,6 +15,7 @@ import {  RadarChartComponent } from '../../radar-chart'
               ModalDemoComponent, 
               TestChartComponent, 
               BarChartComponent, 
+              SidebarComponent,
               RadarChartComponent]
 })
 export class HomeRootComponent implements OnInit {

@@ -124,3 +124,16 @@ html {
 .secondary-text{
     color: #FC913A;
 }
+.animate-hide {
+    display:none;
+}
+.animate-show {
+    display:block;
+}
+#sidebar-icon{
+    width: 100px;
+}
+#sidebar-logo{
+    text-align: center;
+    padding-top: 22vh;
+}
