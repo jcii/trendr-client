@@ -35,6 +35,7 @@ export class LoginRootComponent implements OnInit {
       .subscribe(
         response => {
           console.log(response.json())
+          this._router.navigate(['/'])
         },
         error => {
           console.log(error);

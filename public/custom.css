@@ -135,5 +135,25 @@ html {
 }
 #sidebar-logo{
     text-align: center;
-    padding-top: 22vh;
+    padding-top: 10vh;
+    padding-bottom: 30px;
+}
+#brand-icon{
+    height: 30px;
+}
+.sidebar-button-group{
+    text-align: center;
+}
+.btn-outline-sidebar{
+    font-size: 25px;
+    color: #FC913A;
+    background-image: none;
+    background-color: transparent;
+    border-color: #FC913A;
+    padding: 15px;
+}
+.btn-outline-sidebar:hover {
+    background-color: #FC913A;
+    border-color: #FC913A;
+    color: black
 }
