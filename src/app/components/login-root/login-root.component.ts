@@ -35,7 +35,7 @@ export class LoginRootComponent implements OnInit {
       .subscribe(
         response => {
           console.log(response.json())
-          this._router.navigate(['/'])
+          this._router.navigate(['/dash'])
         },
         error => {
           console.log(error);
