@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
+import { ROUTER_DIRECTIVES, ActivatedRoute } from '@angular/router'
 import { NavbarComponent } from '../navbar'
 import { ModalDemoComponent } from '../test-modal'
 import { TestChartComponent } from '../test-chart'
 import { BarChartComponent } from '../../bar-chart'
 import { RadarChartComponent } from '../../radar-chart'
 import { SidebarComponent } from '../../sidebar'
+import { HichartComponent } from '../hichart'
 
 @Component({
   moduleId: module.id,
@@ -16,7 +18,9 @@ import { SidebarComponent } from '../../sidebar'
               TestChartComponent, 
               BarChartComponent, 
               SidebarComponent,
-              RadarChartComponent]
+              RadarChartComponent,
+              HichartComponent,
+              ROUTER_DIRECTIVES]
 })
 export class HomeRootComponent implements OnInit {
 

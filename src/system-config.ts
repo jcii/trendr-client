@@ -72,6 +72,7 @@ const barrels: string[] = [
   'app/components/gen-bar-chart',
   'app/sidebar',
   'app/home-page',
+  'app/components/hichart',
   /** @cli-barrel */
 ];
 
