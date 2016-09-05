@@ -13,7 +13,7 @@ const APP_ROUTES = [
         //     { path: 'trends', component: RegisterComponent }
         // ]
      },
-    { path: 'trend/:trendId', component: TrendDetailRootComponent },
+    { path: 'trend', component: TrendDetailRootComponent },
     { path: 'register', component: RegisterComponent }
 ]
 

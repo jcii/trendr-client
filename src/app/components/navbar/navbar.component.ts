@@ -9,7 +9,7 @@ import { FaDirective } from 'angular2-fontawesome/directives'
   selector: 'app-navbar',
   templateUrl: 'navbar.component.html',
   styleUrls: ['navbar.component.css', '/vendor/font-awesome/css/font-awesome.css'],
-  directives: [ROUTER_DIRECTIVES, DROPDOWN_DIRECTIVES, FaComponent]
+  directives: [ROUTER_DIRECTIVES, DROPDOWN_DIRECTIVES, FaComponent, FaDirective]
 })
 
 export class NavbarComponent implements OnInit {
