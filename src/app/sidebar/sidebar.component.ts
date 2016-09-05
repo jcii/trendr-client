@@ -9,6 +9,7 @@ import { CORE_DIRECTIVES } from '@angular/common';
   styleUrls: ['sidebar.component.css'],
   directives: [ROUTER_DIRECTIVES, CORE_DIRECTIVES]
 })
+
 export class SidebarComponent implements OnInit {
 	isActive = false;
 	showMenu: string = '';
