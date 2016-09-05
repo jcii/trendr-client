@@ -76,6 +76,10 @@ const barrels: string[] = [
   'app/components/profile',
   'app/components/trend',
   'app/components/trends',
+  'app/components/slider',
+  'app/components/carousel',
+  'app/components/carousel-container',
+  'app/components/slide',
   /** @cli-barrel */
 ];
 
