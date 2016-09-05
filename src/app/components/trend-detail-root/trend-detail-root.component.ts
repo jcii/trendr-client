@@ -25,6 +25,9 @@ import { GenBarChartComponent } from '../gen-bar-chart'
     GenBarChartComponent],
   providers: [GetDataService]
 })
+
+
+
 export class TrendDetailRootComponent implements OnInit {
   private subscription: Subscription
   trendId: any
@@ -55,8 +58,6 @@ export class TrendDetailRootComponent implements OnInit {
       console.log(data)
       this.groupedStockHistoryData = data.map(elem => Number(elem.price))
       this.groupedStockHistoryLabels = data.map(elem => elem.day)
-      console.log(this.groupedStockHistoryData)
-      console.log(this.groupedStockHistoryLabels)
       this.showStockHistory = false
       this.groupData = true
     })
