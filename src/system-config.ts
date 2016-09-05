@@ -73,6 +73,10 @@ const barrels: string[] = [
   'app/sidebar',
   'app/home-page',
   'app/components/hichart',
+  'app/components/slider',
+  'app/components/carousel',
+  'app/components/carousel-container',
+  'app/components/slide',
   /** @cli-barrel */
 ];
 

@@ -1,31 +1,32 @@
 <app-navbar></app-navbar>
 <sidebar></sidebar>
 <section class="main-container">
-<h1 class="h1">Trends page</h1>
+    <h1 class="h1">Trends page</h1>
+    <app-carousel></app-carousel>
 
-<hr>
+    <hr>
 
-<app-test-chart></app-test-chart>
+    <app-test-chart></app-test-chart>
 
-<app-realtime-stock-chart></app-realtime-stock-chart>
+    <app-realtime-stock-chart></app-realtime-stock-chart>
 
-<hr>
+    <hr>
 
-<button class="btn btn-primary" (click)="groupThatShit()">Group that shit</button>
+    <button class="btn btn-primary" (click)="groupThatShit()">Group that shit</button>
 
-<app-gen-line-chart 
-    *ngIf="showStockHistory"
-    [lineChartData]="[{data: stockHistoryData, label: 'Stock history yo'}]" 
-    [lineChartLabels]="stockHistoryLabels">
-</app-gen-line-chart>
+    <app-gen-line-chart 
+        *ngIf="showStockHistory"
+        [lineChartData]="[{data: stockHistoryData, label: 'Stock history yo'}]" 
+        [lineChartLabels]="stockHistoryLabels">
+    </app-gen-line-chart>
 
 
-<hr>
+    <hr>
 
-<app-gen-bar-chart
-    *ngIf="groupData"
-    [barChartData]="[{data: groupedStockHistoryData, label: 'Stock history yo'}]" 
-    [barChartLabels]="groupedStockHistoryLabels">
-    
-</app-gen-bar-chart>
+    <app-gen-bar-chart
+        *ngIf="groupData"
+        [barChartData]="[{data: groupedStockHistoryData, label: 'Stock history yo'}]" 
+        [barChartLabels]="groupedStockHistoryLabels">
+        
+    </app-gen-bar-chart>
 </section>

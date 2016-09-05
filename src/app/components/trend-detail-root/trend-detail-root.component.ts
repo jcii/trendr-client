@@ -10,6 +10,7 @@ import { RealtimeStockChartComponent } from '../realtime-stock-chart'
 import { GenLineChartComponent } from '../gen-line-chart'
 import { GenBarChartComponent } from '../gen-bar-chart'
 import { SidebarComponent } from '../../sidebar'
+import { CarouselComponent } from '../carousel'
 
 
 @Component({
@@ -25,7 +26,8 @@ import { SidebarComponent } from '../../sidebar'
     GenLineChartComponent, 
     GenBarChartComponent, 
     NavbarComponent,
-    SidebarComponent],
+    SidebarComponent,
+    CarouselComponent],
   providers: [GetDataService]
 })
 
