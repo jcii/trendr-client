@@ -3120,7 +3120,7 @@ table {
   }
   blockquote,
   pre {
-    border: 1px solid #999
+    border: 1px solid white;
   }
   thead {
     display: table-header-group
@@ -4786,22 +4786,22 @@ pre code {
 }
 
 .form-control::-webkit-input-placeholder {
-  color: #999;
+  color: white;;
   opacity: 1
 }
 
 .form-control::-moz-placeholder {
-  color: #999;
+  color: white;;
   opacity: 1
 }
 
 .form-control:-ms-input-placeholder {
-  color: #999;
+  color: white;;
   opacity: 1
 }
 
 .form-control::placeholder {
-  color: #999;
+  color: white;;
   opacity: 1
 }
 
@@ -9015,7 +9015,7 @@ a.bg-danger:hover {
 }
 
 .topnav .top-right-nav .buy-now a {
-  color: #999
+  color: white;
 }
 
 .topnav .top-right-nav .dropdown-menu {
@@ -9068,7 +9068,7 @@ a:hover {
   background: black;;
   border: 0;
   border-radius: 0;
-  color: #999;
+  color: white;;
   text-decoration: none
 }
 
@@ -9090,7 +9090,7 @@ a:hover {
 }
 
 .sidebar .sidebar-dropdown .panel-title a {
-  color: #999;
+  color: white;;
   text-decoration: none;
   font-weight: 400;
   background: black;
@@ -9125,7 +9125,7 @@ a:hover {
 }
 
 .sidebar .sidebar-dropdown .panel-collapse .panel-body .list-group-item a {
-  color: #999
+  color: white;
 }
 
 .sidebar .sidebar-dropdown .panel-collapse .panel-body .list-group-item a:hover {
@@ -9172,7 +9172,7 @@ a:hover {
   margin-bottom: 10px;
   margin-right: 15px;
   padding-bottom: 5px;
-  border-bottom: 1px dotted #999
+  border-bottom: 1px dotted white;
 }
 
 .chat-panel .card-footer input {
