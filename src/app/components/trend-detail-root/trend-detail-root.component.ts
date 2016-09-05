@@ -9,6 +9,7 @@ import { TestChartComponent } from '../test-chart'
 import { RealtimeStockChartComponent } from '../realtime-stock-chart'
 import { GenLineChartComponent } from '../gen-line-chart'
 import { GenBarChartComponent } from '../gen-bar-chart'
+import { SidebarComponent } from '../../sidebar'
 
 
 @Component({
@@ -22,7 +23,9 @@ import { GenBarChartComponent } from '../gen-bar-chart'
     TestChartComponent, 
     RealtimeStockChartComponent, 
     GenLineChartComponent, 
-    GenBarChartComponent],
+    GenBarChartComponent, 
+    NavbarComponent,
+    SidebarComponent],
   providers: [GetDataService]
 })
 
@@ -33,9 +36,9 @@ export class TrendDetailRootComponent implements OnInit {
   trendId: any
 
   constructor(private getDataService: GetDataService, private activatedRoute: ActivatedRoute) {
-    this.subscription = activatedRoute.params.subscribe(param => {
-      this.trendId = param['trendId']
-    })
+    // this.subscription = activatedRoute.params.subscribe(param => {
+    //   this.trendId = param['trendId']
+    // })
   }
   showStockHistory: boolean = false
   groupData: boolean = false
@@ -69,7 +72,6 @@ export class TrendDetailRootComponent implements OnInit {
 
   ngOnDestroy() {
     this.subscription.unsubscribe()
-    // clearInterval(this.stockInterval);
   }
 
 }

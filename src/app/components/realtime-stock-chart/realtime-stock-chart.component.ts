@@ -1,4 +1,4 @@
-import { Component, OnInit, ApplicationRef, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, ApplicationRef, ChangeDetectorRef, OnDestroy } from '@angular/core';
 import { GetDataService } from '../../services/get-data.service'
 import {CORE_DIRECTIVES, FORM_DIRECTIVES, NgClass} from '@angular/common';
 import {CHART_DIRECTIVES} from 'ng2-charts/ng2-charts';
@@ -57,6 +57,10 @@ export class RealtimeStockChartComponent implements OnInit {
 
   ngOnInit() {
     // this.stockInterval = setInterval(this.getStockData, 5000) 
+  }
+
+  ngOnDestroy() {
+    clearInterval(this.stockInterval);
   }
 
 }
