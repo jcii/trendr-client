@@ -73,6 +73,9 @@ const barrels: string[] = [
   'app/sidebar',
   'app/home-page',
   'app/components/hichart',
+  'app/components/profile',
+  'app/components/trend',
+  'app/components/trends',
   /** @cli-barrel */
 ];
 
