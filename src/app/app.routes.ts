@@ -8,7 +8,11 @@ import { HomePageComponent } from './home-page'
 const APP_ROUTES = [
     { path: '', component: HomePageComponent },
     { path: 'login', component: LoginRootComponent }, 
-    { path: 'dash', component: HomeRootComponent },
+    { path: 'dash', component: HomeRootComponent
+        // children: [
+        //     { path: 'trends', component: RegisterComponent }
+        // ]
+     },
     { path: 'trend/:trendId', component: TrendDetailRootComponent },
     { path: 'register', component: RegisterComponent }
 ]
