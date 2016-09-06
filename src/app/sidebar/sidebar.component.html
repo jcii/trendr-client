@@ -3,7 +3,7 @@
 </button>
 <nav class="sidebar" [ngClass]="{sidebarPushRight: isActive}">
   <ul class="list-group">
-    <a [routerLink]="['home']" class="list-group-item">
+    <a [routerLink]="['/dash']" class="list-group-item">
       <i class="fa fa-fw fa-dashboard"></i> Dashboard
     </a>
     <a [routerLink]="['/dash', '/trends']" class="list-group-item">
@@ -27,9 +27,6 @@
     <a [routerLink]="['/dashboard', '/blank-page']" class="list-group-item">
       <i class="fa fa-file-o"></i> &nbsp;BlankPage
     </a>
-    <a class="list-group-item more-themes" href="http://www.strapui.com/">
-            More Themes
-        </a>
   </ul>
   <div id="sidebar-logo">
     <img id="sidebar-icon" src="trendr.png" alt="">
