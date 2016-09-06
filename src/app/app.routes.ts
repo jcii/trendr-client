@@ -6,6 +6,7 @@ import { RegisterComponent } from './register'
 import { HomePageComponent } from './home-page'
 import { ProfileComponent } from './components/profile'
 import { TrendsComponent } from './components/trends'
+import { DashHomeComponent } from './components/dash-home'
 
 const APP_ROUTES = [
     { path: '', component: HomePageComponent },
@@ -14,7 +15,7 @@ const APP_ROUTES = [
     
     { path: 'dash', component: HomeRootComponent,
         children: [
-            { path: '', component: HomeRootComponent },
+            { path: '', component: DashHomeComponent },
             { path: 'profile', component: ProfileComponent },
             { path: 'trends', component: TrendsComponent }, 
             { path: 'trend', component: TrendDetailRootComponent, 
