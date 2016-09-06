@@ -68,6 +68,7 @@ html{
   /*background: red;*/
   background: #291717;
   background-image: radial-gradient(brown, transparent);
+  background-image: radial-gradient(#291717, transparent);
   background-size: 5px 5px; 
   width: 100px;
   height: 100px;
@@ -76,33 +77,38 @@ html{
   top: 20px;
   left: 35px;
   /*animation: 13s red infinite;*/
-  border: dotted 2px red;
+  /*border: dotted 2px red;*/
+  border: dotted 2px #291717;
   box-shadow: 
     0 0 20px #111 inset,
-    0 0 10px red;
+    /*0 0 10px red;*/
+    0 0 10px #291717;
 }
 
 .yellow{
   /*background: yellow;*/
   background: #29250F;
-  background-image: radial-gradient(orange, transparent);
+  /*background-image: radial-gradient(orange, transparent);*/
+  background-image: radial-gradient(#29250F, transparent);
   background-size: 5px 5px;
   width: 100px;
   height: 100px;
   border-radius: 50%;
-  border: dotted 2px yellow;
+  /*border: dotted 2px yellow;*/
+  border: dotted 2px #29250F;
   position: absolute;
   top: 145px;
   left: 35px;
   /*animation: 13s yellow infinite;*/
   box-shadow: 
     0 0 20px #111 inset,
-    0 0 10px yellow;
+    /*0 0 10px yellow;*/
+    0 0 10px #29250F;
 }
 
 .green{
   /*background: green;*/
-  background: #0F270F;
+  background: green;
   background-image: radial-gradient(lime, transparent);
   background-size: 5px 5px;
   width: 100px;
