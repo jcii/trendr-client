@@ -9,6 +9,7 @@
     <a [routerLink]="['/dash', '/trends']" class="list-group-item">
       <i class="fa fa-fw fa-bar-chart-o"></i> My Trends
     </a>
+    <app-og-modal></app-og-modal>
     <div class="nested-menu">
       <a class="list-group-item" (click)="addExpandClass('pages')">
         <span><i class="fa fa-plus"></i> &nbsp; TrendWatch</span>
@@ -31,6 +32,7 @@
   <div id="sidebar-logo">
     <img id="sidebar-icon" src="trendr.png" alt="">
   </div>
+  <app-traffic-light></app-traffic-light>
     <div class="sidebar-button-group">
       <div class="btn-group" role="group" aria-label="Basic example">
         <a class="btn btn-outline-sidebar"><i class="button-icon fa fa-user"></i></a>

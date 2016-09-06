@@ -83,6 +83,10 @@ const barrels: string[] = [
   'app/components/dash-home',
   'app/components/mytrends',
   'app/components/new-trend',
+  'app/components/crud-modal',
+  'app/components/og-modal',
+  'app/components/trafic-light',
+  'app/components/traffic-light',
   /** @cli-barrel */
 ];
 
