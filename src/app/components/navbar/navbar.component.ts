@@ -2,7 +2,7 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Router, ROUTER_DIRECTIVES } from '@angular/router';
 import { DROPDOWN_DIRECTIVES } from 'ng2-bootstrap/ng2-bootstrap'
 import { FaComponent } from 'angular2-fontawesome/components'
-import { FaDirective } from 'angular2-fontawesome/directives'
+import { FaDirective } from 'angular2-fontawesome/directives' 
 
 @Component({
   moduleId: module.id,
