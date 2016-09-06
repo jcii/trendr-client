@@ -5,7 +5,7 @@ import { CAROUSEL_DIRECTIVES } from 'ng2-bootstrap/ng2-bootstrap';
   moduleId: module.id,
   selector: 'app-carousel',
   templateUrl: 'carousel.component.html',
-  styleUrls: ['carousel.component.css', 'bootstrap.min.css']
+  styleUrls: ['bootstrap.min.css', 'carousel.component.css']
 })
 export class CarouselComponent {
 
