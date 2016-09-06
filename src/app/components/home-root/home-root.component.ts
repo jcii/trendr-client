@@ -1,7 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewContainerRef } from '@angular/core';
 import { ROUTER_DIRECTIVES, ActivatedRoute } from '@angular/router'
 import { NavbarComponent } from '../navbar'
-import { ModalDemoComponent } from '../test-modal'
 import { TestChartComponent } from '../test-chart'
 import { BarChartComponent } from '../../bar-chart'
 import { RadarChartComponent } from '../../radar-chart'
@@ -13,8 +12,7 @@ import { HichartComponent } from '../hichart'
   selector: 'app-home-root',
   templateUrl: 'home-root.component.html',
   styleUrls: ['home-root.component.css'],
-  directives: [NavbarComponent, 
-              ModalDemoComponent, 
+  directives: [NavbarComponent,  
               TestChartComponent, 
               BarChartComponent, 
               SidebarComponent,
@@ -24,7 +22,9 @@ import { HichartComponent } from '../hichart'
 })
 export class HomeRootComponent implements OnInit {
 
-  constructor() { }
+    public constructor( public viewContainerRef:ViewContainerRef) {
+      this.viewContainerRef = viewContainerRef;
+    }
 
   ngOnInit() {
   }
