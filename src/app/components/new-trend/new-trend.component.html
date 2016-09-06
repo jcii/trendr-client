@@ -1,3 +1,28 @@
-<p>
-  new-trend works!
-</p>
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1 class="display-3">create a new Trend</h1>
+    <p class="lead">First, let's add a stock symbol. Please search for a company below.</p>
+
+    <div class="form-group">
+      <input #query (keyup)="searchForStock(query.value)" type="text" class="form-control" id="symbol-search" placeholder="NASDAQ, AMEX or NYSE symbol or Company name">
+      <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+    </div>
+
+    <div id="symbol-list">
+      <div class="list-group">
+        <a href="#" class="list-group-item list-group-item-action active">
+          <h5 class="list-group-item-heading">List group item heading</h5>
+          <p class="list-group-item-text">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
+        </a>
+        <a href="#" class="list-group-item list-group-item-action">
+          <h5 class="list-group-item-heading">List group item heading</h5>
+          <p class="list-group-item-text">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
+        </a>
+        <a href="#" class="list-group-item list-group-item-action">
+          <h5 class="list-group-item-heading">List group item heading</h5>
+          <p class="list-group-item-text">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
