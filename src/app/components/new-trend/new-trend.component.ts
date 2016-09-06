@@ -9,13 +9,16 @@ import { StockSearchService } from '../../services/stock-search.service'
   providers: [StockSearchService]
 })
 export class NewTrendComponent implements OnInit {
+  public symbols: any
   constructor(private _stockSearchService: StockSearchService) { }
   ngOnInit() { }
   searchForStock(query){
     this._stockSearchService.searchForSymbol(query)
       .subscribe(
         response => {
-          console.log(response.json());
+          this.symbols = response.json()
+          console.log(this.symbols)
+          
         },
         error => {
           console.log(error)
