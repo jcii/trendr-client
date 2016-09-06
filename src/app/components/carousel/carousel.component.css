@@ -2,3 +2,13 @@
     position: absolute;
     top: 50%;
 }
+
+
+.car-container {
+    background-color: transparent;
+    opacity: 0;
+}
+
+.car-container:focus {
+    opacity: 0;
+}
