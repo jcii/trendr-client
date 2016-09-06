@@ -7,22 +7,23 @@
       <input #query (keyup)="searchForStock(query.value)" type="text" class="form-control" id="symbol-search" placeholder="NASDAQ, AMEX or NYSE symbol or Company name">
       <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
     </div>
-
-    <div id="symbol-list">
-      <div class="list-group">
-        <a href="#" class="list-group-item list-group-item-action active">
-          <h5 class="list-group-item-heading">List group item heading</h5>
-          <p class="list-group-item-text">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-        </a>
-        <a href="#" class="list-group-item list-group-item-action">
-          <h5 class="list-group-item-heading">List group item heading</h5>
-          <p class="list-group-item-text">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-        </a>
-        <a href="#" class="list-group-item list-group-item-action">
-          <h5 class="list-group-item-heading">List group item heading</h5>
-          <p class="list-group-item-text">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-        </a>
-      </div>
-    </div>
-  </div>
+    <ul class="list-group">
+      <li *ngFor="let symbol of symbols" class="list-group-item row">
+        <div class="col-md-1">
+          <span class="tag tag-primary tag-pill pull-md-left">{{ symbol.symbol }}</span>
+        </div>
+        <div class="col-md-6">
+          <h4>{{ symbol.company_name }}</h4>
+          <h5>{{ symbol.industry }}</h5>
+        </div>
+        <div class="col-md-3">
+          <span class="tag tag-secondary tag-pill pull-xs-right">Market Cap: {{ symbol.MarketCap }}</span>
+          <span class="tag tag-default tag-pill pull-xs-right">IPO Year: {{ symbol.IPOyear }}</span>
+        </div>
+        <div class="col-md-2">
+          <div class="btn btn-outline-primary">Add To Trend</div>
+        </div>
+      </li>
+    </ul>
+</div>
 </div>
