@@ -12,8 +12,8 @@ import { HichartComponent } from '../hichart'
 })
 export class CarouselComponent {
 
-blur(elem) {
-  document.getElementById(elem).blur()
-}
+  blur(elem) {
+    document.getElementById(elem).blur()
+  }
 
 }
