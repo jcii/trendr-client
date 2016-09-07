@@ -1,7 +1,34 @@
 .market-group{
-  border-color: white !important;
-  color: white !important;
+  border-color: #FC913A;
+  color: #FC913A;
 }
 .market{
-  background-color: black !important;
+  border-color: #FC913A;
+  background-color: black;
+}
+.tag-pill {
+    padding-right: .6em;
+    padding-left: .6em;
+    border-radius: 10rem;
+}
+.tag {
+    display: inline-block;
+    padding: .25em .4em;
+    font-weight: 700;
+    line-height: 1;
+    color: #fff;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: .25rem;
+}
+.tag-danger{
+    background-color: #d9534f;
+}
+.tag-success {
+ background-color: #5cb85c; 
+}
+
+.keyword_pill{
+  margin: 10px;
 }

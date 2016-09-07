@@ -1,14 +1,17 @@
 <ul class="list-group market-group">
   <li class="list-group-item market">
-    <span class="tag tag-default tag-pill pull-xs-right">14</span>
+    <span [hidden]="nasdaqOpen" class="tag tag-danger tag-pill pull-xs-right">CLOSED</span>
+    <span [hidden]="!nasdaqOpen" class="tag tag-success tag-pill pull-xs-right">OPEN</span>
     NASDAQ
   </li>
   <li class="list-group-item market">
-    <span class="tag tag-default tag-pill pull-xs-right">2</span>
+    <span [hidden]="amexOpen" class="tag tag-danger tag-pill pull-xs-right">CLOSED</span>
+    <span [hidden]="!amexOpen" class="tag tag-success tag-pill pull-xs-right">OPEN</span>
     AMEX
   </li>
   <li class="list-group-item market">
-    <span class="tag tag-default tag-pill pull-xs-right">1</span>
+    <span [hidden]="nyseOpen" class="tag tag-danger tag-pill pull-xs-right">CLOSED</span>
+    <span [hidden]="!nyseOpen" class="tag tag-success tag-pill pull-xs-right">OPEN</span>
     NYSE
   </li>
 </ul>

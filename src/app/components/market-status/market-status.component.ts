@@ -7,10 +7,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['market-status.component.css']
 })
 export class MarketStatusComponent implements OnInit {
-
+  public nasdaqOpen: boolean = true
+  public nyseOpen: boolean = false
+  public amexOpen: boolean = false
   constructor() { }
-
-  ngOnInit() {
-  }
+  ngOnInit() { }
 
 }
