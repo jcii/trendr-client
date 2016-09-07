@@ -5,6 +5,7 @@
     <li data-target="#myCarousel" data-slide-to="1"></li>
     <li data-target="#myCarousel" data-slide-to="2"></li>
     <li data-target="#myCarousel" data-slide-to="3"></li>
+    <li data-target="#myCarousel" data-slide-to="4"></li>
   </ol>
 
   <!-- Wrapper for slides -->
@@ -14,16 +15,41 @@
     </div>
 
     <div class="item">
-      <app-word-sum-barchart></app-word-sum-barchart>
+      <app-word-sum-barchart
+        [barChartLabels]="barChartLabels"
+        [barChartData]="barChartData">
+      </app-word-sum-barchart>
     </div>
 
     <div class="item">
-      <bar-chart></bar-chart>
+      <app-doughnut-word-sum
+      [doughnutChartLabels]="doughnutChartLabels"
+      [doughnutChartData]="doughnutChartData">
+      </app-doughnut-word-sum>
     </div>
 
     <div class="item">
-      <bar-chart></bar-chart>
+      <app-realtime-stock-chart></app-realtime-stock-chart>
     </div>
+
+    <div class="item">
+      <button class="btn btn-primary" (click)="groupThatShit()">Group that shit</button>
+
+      <app-gen-line-chart 
+          *ngIf="showStockHistory"
+          [lineChartData]="[{data: stockHistoryData, label: 'Stock history yo'}]" 
+          [lineChartLabels]="stockHistoryLabels">
+      </app-gen-line-chart>
+      
+      <app-gen-bar-chart
+        *ngIf="groupData"
+        [barChartData]="[{data: groupedStockHistoryData, label: 'Stock history yo'}]" 
+        [barChartLabels]="groupedStockHistoryLabels">
+      </app-gen-bar-chart>
+    </div>
+
+
+
   </div>
 
   <!-- Left and right controls -->
