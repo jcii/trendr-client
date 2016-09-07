@@ -24,9 +24,12 @@
     border-radius: .25rem;
 }
 
-.symbol-container {
-
+.keyword_pill{
+  margin: 10px;
 }
-.stock-data-container {
-  
+.text-center {
+  text-align: center;
+}
+.full-width {
+  width: 100%;
 }

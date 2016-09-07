@@ -9141,6 +9141,8 @@ a:hover {
 }
 
 .main-container {
+  height: 97vh;
+  background-color: #ECEEEF;
   margin: 50px 0 0 225px;
   padding: 10px;
   -ms-overflow-x: hidden;
@@ -9238,6 +9240,7 @@ a:hover {
   }
   .main-container {
     margin-left: 0
+    
   }
   .loading {
     left: 39%!important
