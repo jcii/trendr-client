@@ -32,12 +32,14 @@
   <div id="sidebar-logo">
     <img id="sidebar-icon" src="trendr.png" alt="">
   </div>
-  <app-traffic-light></app-traffic-light>
     <div class="sidebar-button-group">
       <div class="btn-group" role="group" aria-label="Basic example">
         <a class="btn btn-outline-sidebar"><i class="button-icon fa fa-user"></i></a>
         <a class="btn btn-outline-sidebar"><i class="button-icon fa fa-gear"></i></a>
         <a [routerLink]="['/login']" class="btn btn-outline-sidebar"><i class="button-icon fa fa-power-off"></i></a>
-      </div>
+    </div>
+  </div>
+  <div class="market-status-container">
+    <app-market-status></app-market-status>
   </div>
 </nav>

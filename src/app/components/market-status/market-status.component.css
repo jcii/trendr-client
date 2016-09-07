@@ -1,12 +1,10 @@
-
-.tag-default {
-    background-color: #818a91;
+.market-group{
+  border-color: #FC913A;
+  color: #FC913A;
 }
-.tag-primary {
-    background-color: #FC913A;
-}
-.tag-secondary {
-    background-color: #FF4E50;
+.market{
+  border-color: #FC913A;
+  background-color: black;
 }
 .tag-pill {
     padding-right: .6em;
@@ -27,13 +25,10 @@
 .tag-danger{
     background-color: #d9534f;
 }
+.tag-success {
+ background-color: #5cb85c; 
+}
 
 .keyword_pill{
   margin: 10px;
-}
-.text-center {
-  text-align: center;
-}
-.full-width {
-  width: 100%;
 }

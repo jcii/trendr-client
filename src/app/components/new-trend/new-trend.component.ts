@@ -10,10 +10,11 @@ import { StockSearchService } from '../../services/stock-search.service'
 })
 
 export class NewTrendComponent implements OnInit {
-  public symbols: any
+  public symbols: any = []
   public selectedSymbol: string 
   public isTrendSelected: boolean = false
   public trendKeywords:any = []
+  public symbolCallComplete: boolean = false
 
 
   constructor(private _stockSearchService: StockSearchService) { }
@@ -26,11 +27,14 @@ export class NewTrendComponent implements OnInit {
   }
   removeStockSymbol(){
     this.isTrendSelected = false
+    this.symbolCallComplete = false
     this.selectedSymbol = ''
   }
   addSymbolToTrend(symbol){    
-    this.isTrendSelected = true
-    this.selectedSymbol = symbol
+    if(this.symbols.length != 0){
+      this.isTrendSelected = true
+      this.selectedSymbol = symbol
+    }
   }
   addKeyWord(keyword_input){
     this.trendKeywords.push(keyword_input.value)
@@ -45,6 +49,7 @@ export class NewTrendComponent implements OnInit {
       .subscribe(
         response => {
           this.symbols = response.json()
+          this.symbolCallComplete = true
           console.log(this.symbols)
         },
         error => {

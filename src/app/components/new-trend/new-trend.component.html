@@ -2,11 +2,11 @@
 <div class="text-center">
   <h2 class="display-3">Let's create a new Trend</h2>
 </div>
-  <div [class.col-]="query.value == ''" [class.text-center]="query.value == ''">
+  <div [class.col-]="query.value == ''" [class.text-center]="query.value == '' || isTrendSelected">
     <div
     [class.col-md-6]="query.value != ''" 
-    [class.col-md-8]="query.value == ''"
-    [class.col-md-offset-2]="query.value == ''">
+    [class.col-md-8]="query.value == '' || isTrendSelected"
+    [class.col-md-offset-2]="query.value == '' || isTrendSelected">
     <form>
       <div class="form-group">
         <p class="lead">First let's add a Trend title. What do you want your trend to be called?</p>
@@ -18,14 +18,14 @@
         <div class="form-group">
           <h1 [hidden]="!isTrendSelected">
             <span class="tag tag-primary">
-              <i (click)="removeStockSymbol()" class="fa fa-times-circle" aria-hidden="true"></i>
+              <i (click)="removeStockSymbol()" class="fa fa-times-circle"></i>
               {{ selectedSymbol }}
             </span>
             </h1>
           <input 
           [hidden]="isTrendSelected" 
           #query 
-          (keyup.enter)="addSymbolToTrend(symbols[0].symbol)" 
+          (keyup.enter)="symbols.length != 0 ? addSymbolToTrend(symbols[0].symbol) : null" 
           (keydown.arrowup)="moveUp($event)"
           (keydown.arrowdown)="moveDown($event)"
           (keyup)="searchForStock(query.value)" 
@@ -55,32 +55,30 @@
     </form>
   </div>
   </div>
-
-
-
-
-  <div [hidden]="isTrendSelected" class="col-md-6">
-    <ul class="list-group">
-      <li 
-        [class.active]="symbol === symbols[0]" 
-        [hidden]="query.value === ''" 
-        *ngFor="let symbol of symbols" 
-        class="list-group-item row">
-        <div class="col-md-2">
-          <h3><span class="tag tag-primary tag-pill pull-md-left">{{ symbol.symbol }}</span></h3>
-        </div>
-        <div class="col-md-5">
-          <h4>{{ symbol.company_name }}</h4>
-          <h5>{{ symbol.industry }}</h5>
-        </div>
-        <div class="col-md-3">
-          <span class="tag tag-secondary tag-pill pull-xs-right">Market Cap: {{ symbol.MarketCap }}</span>
-          <span [hidden]="symbol.IPOyear === 'n/a'" class="tag tag-default tag-pill pull-xs-right">IPO Year: {{ symbol.IPOyear }}</span>
-        </div>
-        <div class="col-md-2">
-          <div (click)="addSymbolToTrend(symbol.symbol)" class="btn btn-outline-primary">
-            <h3>Add</h3></div>
-        </div>
-      </li>
-    </ul>
-  </div>
+<!--begin stock symbol display-->
+<div [hidden]="isTrendSelected" class="col-md-6">
+  <div [hidden]="isTrendSelected || query.value === '' || symbols.length != 0 || !symbolCallComplete" class="alert alert-danger">Looks like your search did not match any stock symbols!</div>
+  <ul class="list-group">
+    <li 
+      [class.active]="symbol === symbols[0]" 
+      [hidden]="query.value === ''" 
+      *ngFor="let symbol of symbols" 
+      class="list-group-item row">
+      <div class="col-md-2">
+        <h3><span class="tag tag-primary tag-pill pull-md-left">{{ symbol.symbol }}</span></h3>
+      </div>
+      <div class="col-md-5">
+        <h4>{{ symbol.company_name }}</h4>
+        <h5>{{ symbol.industry }}</h5>
+      </div>
+      <div class="col-md-3">
+        <span class="tag tag-secondary tag-pill pull-xs-right">Market Cap: {{ symbol.MarketCap }}</span>
+        <span [hidden]="symbol.IPOyear === 'n/a'" class="tag tag-default tag-pill pull-xs-right">IPO Year: {{ symbol.IPOyear }}</span>
+      </div>
+      <div class="col-md-2">
+        <div (click)="addSymbolToTrend(symbol.symbol)" class="btn btn-outline-primary">
+          <h3>Add</h3></div>
+      </div>
+    </li>
+  </ul>
+</div>
