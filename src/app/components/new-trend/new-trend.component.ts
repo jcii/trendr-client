@@ -11,11 +11,11 @@ import { StockSearchService } from '../../services/stock-search.service'
 
 export class NewTrendComponent implements OnInit {
   public symbols: any = []
-  public selectedSymbol: string 
+  public selectedSymbol: any = {} 
   public isTrendSelected: boolean = false
   public trendKeywords:any = []
   public symbolCallComplete: boolean = false
-
+  public trendTitle: string
 
   constructor(private _stockSearchService: StockSearchService) { }
   ngOnInit() { }
@@ -28,7 +28,7 @@ export class NewTrendComponent implements OnInit {
   removeStockSymbol(){
     this.isTrendSelected = false
     this.symbolCallComplete = false
-    this.selectedSymbol = ''
+    this.selectedSymbol = {}
   }
   addSymbolToTrend(symbol){    
     if(this.symbols.length != 0){
@@ -56,5 +56,17 @@ export class NewTrendComponent implements OnInit {
           console.log(error)
         }
       )
+  }
+  createNewTrend(){
+    if(this.symbols.length != 0 && this.trendKeywords.length !=0){
+      const newTrend = {
+        trend_title: this.trendTitle,
+        trend_keywords: this.trendKeywords,
+        trend_symbol: this.selectedSymbol.symbol
+      }
+      console.log(newTrend);
+      
+    }
+    
   }
 }
