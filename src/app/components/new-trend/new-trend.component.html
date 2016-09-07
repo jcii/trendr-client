@@ -1,17 +1,14 @@
-
 <div class="text-center">
   <h2 class="display-3">Let's create a new Trend</h2>
 </div>
-  <div [class.col-]="query.value == ''" [class.text-center]="query.value == '' || isTrendSelected">
-    <div
-    [class.col-md-6]="query.value != ''" 
-    [class.col-md-8]="query.value == '' || isTrendSelected"
-    [class.col-md-offset-2]="query.value == '' || isTrendSelected">
-    <form>
+<div [class.col-]="query.value == ''" [class.text-center]="query.value == '' || isTrendSelected">
+  <div [class.col-md-6]="query.value != ''" [class.col-md-8]="query.value == '' || isTrendSelected" [class.col-md-offset-2]="query.value == '' || isTrendSelected">
+    <form name="createTrend" #createTrend novalidate autocomplete="off" (ngSubmit)="createNewTrend()">
+
       <div class="form-group">
         <p class="lead">First let's add a Trend title. What do you want your trend to be called?</p>
         <div class="form-group">
-          <input placeholder="Trend Title" #trendTitle type="text" class="form-control" id="trend-title">
+          <input required placeholder="Trend Title" #trendTitle type="text" class="form-control" id="trend-title">
         </div>
         <p [hidden]="isTrendSelected" class="lead">Next, let's add a primary stock symbol. Please search for a company below.</p>
         <p [hidden]="!isTrendSelected" class="lead">Stock Symbol Selected:</p>
@@ -19,66 +16,57 @@
           <h1 [hidden]="!isTrendSelected">
             <span class="tag tag-primary">
               <i (click)="removeStockSymbol()" class="fa fa-times-circle"></i>
-              {{ selectedSymbol }}
+              {{ selectedSymbol.symbol }}
+              <span class="tag tag-primary">{{ selectedSymbol.company_name }}</span>
+              <i class="fa fa-line-chart" aria-hidden="true"></i>
             </span>
             </h1>
-          <input 
-          [hidden]="isTrendSelected" 
-          #query 
-          (keyup.enter)="symbols.length != 0 ? addSymbolToTrend(symbols[0].symbol) : null" 
-          (keydown.arrowup)="moveUp($event)"
-          (keydown.arrowdown)="moveDown($event)"
-          (keyup)="searchForStock(query.value)" 
-          type="text" 
-          class="form-control" 
-          id="symbol-search">
-          <small [hidden]="isTrendSelected"  class="form-text text-muted">NASDAQ, AMEX or NYSE symbol or Company name</small>
+          <input [hidden]="isTrendSelected" #query (keyup.enter)="symbols.length != 0 ? addSymbolToTrend(symbols[0]) : null" (keydown.arrowup)="moveUp($event)" (keydown.arrowdown)="moveDown($event)" (keyup)="searchForStock(query.value)" type="text" class="form-control"
+            id="symbol-search">
+          <small [hidden]="isTrendSelected" class="form-text text-muted">NASDAQ, AMEX or NYSE symbol or Company name</small>
         </div>
         <div class="form-group">
           <p [hidden]="!isTrendSelected" class="lead">Next, let's add some Twitter Keywords to your Trend. Think hashtags, keywords, or short phrases!</p>
-          <input 
-            [hidden]="!isTrendSelected" 
-            #keywordAdd 
-            (keyup.enter)="addKeyWord(keywordAdd)" 
-            type="text" 
-            class="form-control" 
-            id="symbol-search">
+          <input [hidden]="!isTrendSelected" #keywordAdd (keyup.enter)="addKeyWord(keywordAdd)" type="text" class="form-control" id="symbol-search">
           <small [hidden]="!isTrendSelected" class="form-text text-muted">Your trend's keywords can contain up to 4 hastags or words!</small>
           <h1 [hidden]="trendKeywords.length === 0">
-            <span *ngFor="let word of trendKeywords" class="keyword_pill tag tag-primary"> 
+            <span *ngFor="let word of trendKeywords" class="keyword_pill tag tag-twitter"> 
               <i (click)="removeKeyWord(word) && word.toggleState()" class="fa fa-times-circle" aria-hidden="true"></i>
               {{ word }}
+              <i class="fa fa-twitter" aria-hidden="true"></i>
               </span>
               </h1>
+          <p class="lead" [hidden]="trendKeywords.length === 0">That's it! Let's add your trend!</p>
+          <h1 [hidden]="trendKeywords.length === 0">
+              <button type="submit" class="btn btn-outline-secondary">
+                <h1>Create My Trend</h1>
+          </button>
+          </h1>
         </div>
       </div>
     </form>
+
   </div>
+  <!--begin stock symbol display-->
+  <div [hidden]="isTrendSelected" class="col-md-6">
+    <div [hidden]="isTrendSelected || query.value === '' || symbols.length != 0 || !symbolCallComplete" class="alert alert-danger">Looks like your search did not match any stock symbols!</div>
+    <ul class="list-group">
+      <li [class.active]="symbol === symbols[0]" [hidden]="query.value === ''" *ngFor="let symbol of symbols" class="list-group-item row">
+        <div class="col-md-2">
+          <h3><span class="tag tag-primary tag-pill pull-md-left">{{ symbol.symbol }}</span></h3>
+        </div>
+        <div class="col-md-5">
+          <h4>{{ symbol.company_name }}</h4>
+          <h5>{{ symbol.industry }}</h5>
+        </div>
+        <div class="col-md-3">
+          <span class="tag tag-secondary tag-pill pull-xs-right">Market Cap: {{ symbol.MarketCap }}</span>
+          <span [hidden]="symbol.IPOyear === 'n/a'" class="tag tag-default tag-pill pull-xs-right">IPO Year: {{ symbol.IPOyear }}</span>
+        </div>
+        <div class="col-md-2">
+          <div (click)="addSymbolToTrend(symbol.symbol)" class="btn btn-outline-primary">
+            <h3>Add</h3></div>
+        </div>
+      </li>
+    </ul>
   </div>
-<!--begin stock symbol display-->
-<div [hidden]="isTrendSelected" class="col-md-6">
-  <div [hidden]="isTrendSelected || query.value === '' || symbols.length != 0 || !symbolCallComplete" class="alert alert-danger">Looks like your search did not match any stock symbols!</div>
-  <ul class="list-group">
-    <li 
-      [class.active]="symbol === symbols[0]" 
-      [hidden]="query.value === ''" 
-      *ngFor="let symbol of symbols" 
-      class="list-group-item row">
-      <div class="col-md-2">
-        <h3><span class="tag tag-primary tag-pill pull-md-left">{{ symbol.symbol }}</span></h3>
-      </div>
-      <div class="col-md-5">
-        <h4>{{ symbol.company_name }}</h4>
-        <h5>{{ symbol.industry }}</h5>
-      </div>
-      <div class="col-md-3">
-        <span class="tag tag-secondary tag-pill pull-xs-right">Market Cap: {{ symbol.MarketCap }}</span>
-        <span [hidden]="symbol.IPOyear === 'n/a'" class="tag tag-default tag-pill pull-xs-right">IPO Year: {{ symbol.IPOyear }}</span>
-      </div>
-      <div class="col-md-2">
-        <div (click)="addSymbolToTrend(symbol.symbol)" class="btn btn-outline-primary">
-          <h3>Add</h3></div>
-      </div>
-    </li>
-  </ul>
-</div>
