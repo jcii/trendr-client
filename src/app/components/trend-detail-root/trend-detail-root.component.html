@@ -8,24 +8,8 @@
 
     <app-test-chart></app-test-chart>
 
-    <app-realtime-stock-chart></app-realtime-stock-chart>
-
     <hr>
 
-    <button class="btn btn-primary" (click)="groupThatShit()">Group that shit</button>
-
-    <app-gen-line-chart 
-        *ngIf="showStockHistory"
-        [lineChartData]="[{data: stockHistoryData, label: 'Stock history yo'}]" 
-        [lineChartLabels]="stockHistoryLabels">
-    </app-gen-line-chart>
 
 
     <hr>
-
-    <app-gen-bar-chart
-        *ngIf="groupData"
-        [barChartData]="[{data: groupedStockHistoryData, label: 'Stock history yo'}]" 
-        [barChartLabels]="groupedStockHistoryLabels">
-        
-    </app-gen-bar-chart>
