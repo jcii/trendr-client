@@ -15,12 +15,12 @@ import { GenBarChartComponent } from '../gen-bar-chart'
   templateUrl: 'carousel.component.html',
   styleUrls: ['bootstrap.min.css', 'carousel.component.css'],
   directives: [BarChartComponent, 
-                HichartComponent, 
-                WordSumBarchartComponent, 
-                DoughnutWordSumComponent, 
-                RealtimeStockChartComponent,
-                GenLineChartComponent, 
-                GenBarChartComponent],
+      HichartComponent, 
+      WordSumBarchartComponent, 
+      DoughnutWordSumComponent, 
+      RealtimeStockChartComponent,
+      GenLineChartComponent, 
+      GenBarChartComponent],
   providers: [GetDataService]
 })
 export class CarouselComponent {
