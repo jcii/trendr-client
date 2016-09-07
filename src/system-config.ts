@@ -87,6 +87,7 @@ const barrels: string[] = [
   'app/components/og-modal',
   'app/components/trafic-light',
   'app/components/traffic-light',
+  'app/components/word-sum-barchart',
   /** @cli-barrel */
 ];
 
