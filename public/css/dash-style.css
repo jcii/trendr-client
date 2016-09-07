@@ -9440,3 +9440,6 @@ a:hover {
     transform: rotate(1turn)
   }
 }
+.text-center{
+  text-align: center;
+}
