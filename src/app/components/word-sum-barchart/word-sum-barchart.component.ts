@@ -19,13 +19,11 @@ export class WordSumBarchartComponent {
     scaleShowVerticalLines: false,
     responsive: true
   };
-  public barChartLabels:string[] = [];
+  @Input() barChartLabels:string[]
   public barChartType:string = 'bar';
   public barChartLegend:boolean = true;
 
-  public barChartData:any[] = [
-    {data: [], label:'Related Words'}
-  ];
+  @Input() barChartData:any[];
 
   // events
   public chartClicked(e:any):void {
@@ -37,11 +35,7 @@ export class WordSumBarchartComponent {
   }
 
   ngOnInit() {
-    this._getData.getData('http://localhost:3000/twitterSearch').subscribe(data => {
-      console.log(data);
-      this.barChartLabels = data.axisLabels
-      this.barChartData = [{data: data.dataPoints, label:'Related Words'}]
-    })
+
   }
 
 }
