@@ -15,7 +15,9 @@ export class NewTrendComponent implements OnInit {
   public isTrendSelected: boolean = false
   public trendKeywords:any = []
   public symbolCallComplete: boolean = false
-  public trendTitle: string
+  public trend: any = {
+    title: ''
+  }
 
   constructor(private _stockSearchService: StockSearchService) { }
   ngOnInit() { }
@@ -60,9 +62,9 @@ export class NewTrendComponent implements OnInit {
   createNewTrend(){
     if(this.symbols.length != 0 && this.trendKeywords.length !=0){
       const newTrend = {
-        trend_title: this.trendTitle,
+        trend_title: this.trend.title,
         trend_keywords: this.trendKeywords,
-        trend_symbol: this.selectedSymbol.symbol
+        trend_symbols: [this.selectedSymbol.symbol]
       }
       console.log(newTrend);
       
