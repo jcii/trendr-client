@@ -68,7 +68,7 @@ export class NewTrendComponent implements OnInit {
         trend_symbols: [this.selectedSymbol.symbol]
       }
       console.log(newTrend);
-      this._getDataService.postData('http://localhost:3000/trend/', {my: 'trend'}).subscribe(data => {
+      this._getDataService.postData('http://localhost:3000/trend/', newTrend).subscribe(data => {
         console.log(data);
       })
     }
