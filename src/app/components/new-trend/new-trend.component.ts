@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { StockSearchService } from '../../services/stock-search.service'
+import { GetDataService } from '../../services/get-data.service'
 
 @Component({
   moduleId: module.id,
   selector: 'app-new-trend',
   templateUrl: 'new-trend.component.html',
   styleUrls: ['new-trend.component.css'],
-  providers: [StockSearchService]
+  providers: [StockSearchService, GetDataService]
 })
 
 export class NewTrendComponent implements OnInit {
@@ -19,7 +20,7 @@ export class NewTrendComponent implements OnInit {
     title: ''
   }
 
-  constructor(private _stockSearchService: StockSearchService) { }
+  constructor(private _stockSearchService: StockSearchService, private _getDataService: GetDataService) { }
   ngOnInit() { }
   moveUp(event){
     console.log("up");
@@ -67,7 +68,9 @@ export class NewTrendComponent implements OnInit {
         trend_symbols: [this.selectedSymbol.symbol]
       }
       console.log(newTrend);
-      
+      this._getDataService.postData('http://localhost:3000/trend/', {my: 'trend'}).subscribe(data => {
+        console.log(data);
+      })
     }
     
   }
