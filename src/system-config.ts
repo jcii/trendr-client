@@ -90,6 +90,7 @@ const barrels: string[] = [
   'app/components/market-status',
   'app/components/word-sum-barchart',
   'app/components/doughnut-word-sum',
+  'app/components/streaming-words-bar',
   /** @cli-barrel */
 ];
 

@@ -8,6 +8,7 @@ import { DoughnutWordSumComponent } from '../doughnut-word-sum'
 import { RealtimeStockChartComponent } from '../realtime-stock-chart'
 import { GenLineChartComponent } from '../gen-line-chart'
 import { GenBarChartComponent } from '../gen-bar-chart'
+import { StreamingWordsBarComponent } from '../streaming-words-bar'
 
 @Component({
   moduleId: module.id,
@@ -20,7 +21,8 @@ import { GenBarChartComponent } from '../gen-bar-chart'
       DoughnutWordSumComponent, 
       RealtimeStockChartComponent,
       GenLineChartComponent, 
-      GenBarChartComponent],
+      GenBarChartComponent, 
+      StreamingWordsBarComponent],
   providers: [GetDataService]
 })
 export class CarouselComponent {
