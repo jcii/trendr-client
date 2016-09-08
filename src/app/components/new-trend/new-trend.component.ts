@@ -1,13 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { StockSearchService } from '../../services/stock-search.service'
 import { GetDataService } from '../../services/get-data.service'
+import { TrendServiceService } from '../../services/trend-service.service'
+import { ROUTER_DIRECTIVES, Router} from '@angular/router'
 
 @Component({
   moduleId: module.id,
   selector: 'app-new-trend',
   templateUrl: 'new-trend.component.html',
   styleUrls: ['new-trend.component.css'],
-  providers: [StockSearchService, GetDataService]
+  providers: [StockSearchService, GetDataService, TrendServiceService, ROUTER_DIRECTIVES]
 })
 
 export class NewTrendComponent implements OnInit {
@@ -20,7 +22,12 @@ export class NewTrendComponent implements OnInit {
     title: ''
   }
 
-  constructor(private _stockSearchService: StockSearchService, private _getDataService: GetDataService) { }
+  constructor(
+    private _stockSearchService: StockSearchService, 
+    private _getDataService: GetDataService,
+    private _trendService: TrendServiceService,
+    private _router: Router
+    ) { }
   ngOnInit() { }
   moveUp(event){
     console.log("up");
@@ -68,10 +75,11 @@ export class NewTrendComponent implements OnInit {
         trend_symbols: [this.selectedSymbol.symbol]
       }
       console.log(newTrend);
-      this._getDataService.postData('http://localhost:3000/trend/', newTrend).subscribe(data => {
-        console.log(data);
-      })
-    }
-    
+      this._trendService.createTrend(newTrend)
+      .subscribe(
+        data =>  this._router.navigate(['/dash', '/trends']),
+        err => console.log(err)
+      )
+    }    
   }
 }
