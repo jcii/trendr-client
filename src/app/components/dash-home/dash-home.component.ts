@@ -14,8 +14,7 @@ export class DashHomeComponent implements OnInit {
 
   ngOnInit() {
     let user = JSON.parse(localStorage.getItem('user'))
-    console.log(user);
-    
+    console.log(user);    
   }
 
 }
