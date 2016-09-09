@@ -48,7 +48,7 @@ export class StreamingWordsBarComponent implements OnInit {
 
   ngOnInit() {
     this.updateChart()
-    this.streamInterval = setInterval(this.updateChart, 2500)
+    // this.streamInterval = setInterval(this.updateChart, 2500)
   }
 
   ngOnDestroy() {

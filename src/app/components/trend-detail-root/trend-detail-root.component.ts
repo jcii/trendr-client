@@ -11,7 +11,6 @@ import { GenLineChartComponent } from '../gen-line-chart'
 import { GenBarChartComponent } from '../gen-bar-chart'
 import { SidebarComponent } from '../../sidebar'
 import { CarouselComponent } from '../carousel'
-// import { LocalStorage } from 'angular2-localstorage/WebStorage'
 
 
 @Component({
@@ -39,20 +38,20 @@ export class TrendDetailRootComponent implements OnInit {
   trendId: any
 
   constructor(private getDataService: GetDataService, private activatedRoute: ActivatedRoute) {
-    // this.subscription = activatedRoute.params.subscribe(param => {
-    //   this.trendId = param['trendId']
-    // })
+    this.subscription = activatedRoute.params.subscribe(param => {
+      this.trendId = param['id']
+    })
   }
-  // @LocalStorage() public test = 'hello';
 
 
-  setLocalStorage = () => {
-    // console.log(this.test)
-    console.log('THIS SHOULD PRINT')
+  getLocalStorage = () => {
+    let user = localStorage.getItem('user')
+    console.log(JSON.parse(JSON.parse(user)._body).username)
   }
 
     ngOnInit() {
-      this.setLocalStorage()
+      this.getLocalStorage()
+      // console.log(this.trendId)
     }
 
   ngOnDestroy() {

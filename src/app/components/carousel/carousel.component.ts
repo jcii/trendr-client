@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { ActivatedRoute } from '@angular/router'
 import { CAROUSEL_DIRECTIVES } from 'ng2-bootstrap/ng2-bootstrap';
 import { BarChartComponent } from '../../bar-chart'
 import { HichartComponent } from '../hichart'
@@ -9,6 +10,7 @@ import { RealtimeStockChartComponent } from '../realtime-stock-chart'
 import { GenLineChartComponent } from '../gen-line-chart'
 import { GenBarChartComponent } from '../gen-bar-chart'
 import { StreamingWordsBarComponent } from '../streaming-words-bar'
+import { Subscription } from 'rxjs/Rx'
 
 @Component({
   moduleId: module.id,
@@ -26,8 +28,17 @@ import { StreamingWordsBarComponent } from '../streaming-words-bar'
   providers: [GetDataService]
 })
 export class CarouselComponent {
+  private subscription: Subscription
 
-  constructor(private _getData: GetDataService) {}
+  constructor(private _getData: GetDataService, private _activatedRoute: ActivatedRoute) {
+    this.subscription = this._activatedRoute.params.subscribe(param => {
+      this.trendId = param['id']
+    })
+  }
+    
+    trendId: any
+    user: string
+
 
   blur(elem) {
     document.getElementById(elem).blur()
@@ -45,7 +56,7 @@ export class CarouselComponent {
   groupedStockHistoryLabels: any[]
 
     getStockHistory() {
-      this._getData.postData('http://localhost:3000/stockHistory', {NumberOfDays: 30, DataPeriod: 'Day', Symbol: 'NFLX'}).subscribe(data => {
+      this._getData.postData('http://localhost:3000/stockHistory', {user: this.user, trendId: this.trendId, NumberOfDays: 7, DataPeriod: 'Day'}).subscribe(data => {
         console.log(data);
         this.stockHistoryLabels = data.map(elem => elem.full_date)
         this.stockHistoryData = data.map(elem => elem.price)
@@ -62,6 +73,13 @@ export class CarouselComponent {
         this.groupData = true
       })
     }
+  
+  getLocalStorage = () => {
+    let user = localStorage.getItem('user')
+    this.user = JSON.parse(JSON.parse(user)._body).username
+    console.log(this.user);
+    
+  }
 
 
   ngOnInit() {
@@ -72,7 +90,11 @@ export class CarouselComponent {
       this.doughnutChartLabels = data.axisLabels
       this.doughnutChartData = data.dataPoints.map(elem => elem/data.total)
     })
+    this.getLocalStorage()
     this.getStockHistory()
+  }
+  ngOnDestroy() {
+    this.subscription.unsubscribe()
   }
 
 }
