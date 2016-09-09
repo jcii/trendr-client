@@ -21,7 +21,7 @@
 }
 .tag {
     display: inline-block;
-    padding: .25em .4em; 
+    padding: .25em .2em; 
     font-weight: 700;
     line-height: 1;
     color: #fff;
@@ -29,6 +29,8 @@
     white-space: nowrap;
     vertical-align: baseline;
     border-radius: .25rem;
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 .tag-danger{
     background-color: #d9534f;
@@ -42,4 +44,8 @@
 }
 .full-width {
   width: 100%;
+}
+
+.add-button {
+    padding: 10px;
 }
