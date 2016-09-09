@@ -31,10 +31,10 @@ export class LoginRootComponent implements OnInit {
     }
   }
   login(user: User) {
-    this._http.post('https://httpbin.org/post', user, {headers: contentHeaders})
+    this._http.post('http://127.0.0.1:3000/login', user, {headers: contentHeaders})
       .subscribe(
         response => {
-          console.log(response.json())
+          localStorage.setItem('user', JSON.stringify(response))
           this._router.navigate(['/dash'])
         },
         error => {

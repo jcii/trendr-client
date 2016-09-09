@@ -1,18 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import { ROUTER_DIRECTIVES, Router} from '@angular/router'
+import { TrendServiceService } from '../../services/trend-service.service'
 
 @Component({
   moduleId: module.id,
   selector: 'app-trends',
   templateUrl: 'trends.component.html',
   styleUrls: ['trends.component.css'],
-  directives: [ROUTER_DIRECTIVES]
+  directives: [ROUTER_DIRECTIVES],
+  providers: [TrendServiceService]
 })
 export class TrendsComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit() {
-  }
+  constructor(private _trendService: TrendServiceService) { }
+  ngOnInit() {}
 
 }

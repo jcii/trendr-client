@@ -5,16 +5,18 @@ import { AppComponent, environment } from './app/';
 import { APP_ROUTES_PROVIDER } from './app/app.routes'
 import {HTTP_PROVIDERS} from '@angular/http';
 import { CHART_DIRECTIVES } from 'ng2-charts/ng2-charts'
-import { LocalStorageService } from 'angular2-localStorage/LocalStorageEmitter'
+import { trendResolver } from './app/resolvers/trend.resolve'
 
 if (environment.production) {
   enableProdMode();
 }
+
 
 bootstrap(AppComponent, [
     disableDeprecatedForms(), 
     provideForms(),
     APP_ROUTES_PROVIDER, 
     HTTP_PROVIDERS,
-    LocalStorageService
+    trendResolver
     ]);
+

@@ -15,9 +15,8 @@ const map: any = {
     'ng2-charts': 'vendor/ng2-charts',
     'angular2-fontawesome': 'vendor/angular2-fontawesome',
     'angular2-jwt': 'vendor/angular2-jwt',
-    'angular2-ui-switch': 'vendor/angular2-ui-switch',
-    'angular2-localStorage': 'node_modules/angular2-localStorage'
-}; 
+    'angular2-ui-switch': 'vendor/angular2-ui-switch'
+  }; 
 
 /** User packages configuration. */
 const packages: any = {
@@ -26,8 +25,7 @@ const packages: any = {
   'chartjs': { defaultExtension: 'js', format: 'cjs' },
   'angular2-fontawesome':{ defaultExtension: 'js' },
   'angular2-jwt': { main: 'angular2-jwt.js' },
-  'angular2-ui-switch': { defaultExtension: 'js' },
-  'angular2-localstorage': { defaultExtension: "ts" }
+  'angular2-ui-switch': { defaultExtension: 'js' }
 };
 
 

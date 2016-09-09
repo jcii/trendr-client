@@ -9,6 +9,6 @@ export class TrendServiceService {
     return this._http.post('http://127.0.0.1:3000/trend/', trend, { headers: contentHeaders})
   }
   getAllTrends(){
-    return this._http.get('http://127.0.0.1:3000/allTrends/')
+    return this._http.post('http://127.0.0.1:3000/trend/userTrends/', {user_id: 1}, {headers: contentHeaders})
   }  
 }
