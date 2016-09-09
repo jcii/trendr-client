@@ -1,4 +1,4 @@
-import { Component, OnInit, ApplicationRef, ChangeDetectorRef, OnDestroy } from '@angular/core';
+import { Component, OnInit, ApplicationRef, ChangeDetectorRef, OnDestroy, Input } from '@angular/core';
 import { GetDataService } from '../../services/get-data.service'
 import {CORE_DIRECTIVES, FORM_DIRECTIVES, NgClass} from '@angular/common';
 import {CHART_DIRECTIVES} from 'ng2-charts/ng2-charts';
@@ -17,12 +17,14 @@ export class RealtimeStockChartComponent implements OnInit {
   lineChartDataArray: Array<any> = [
     {data: this.prices, label: 'Stock Price Yo'}
   ]
+  @Input() trendId: any
+  @Input() user: string
 
   constructor(private getDataService: GetDataService, private ar: ApplicationRef, private cdr: ChangeDetectorRef) { }
 
 
     getStockData = () => {
-    this.getDataService.getData('http://localhost:3000/realtimeStocks').subscribe(data => {
+    this.getDataService.postData('http://localhost:3000/realtimeStocks', {trendId: this.trendId, user: this.user}).subscribe(data => {
       this.getDataService.postData('http://localhost:3000/realtimeStocks/updateDatabase', JSON.parse(data)).subscribe(finalData => {
         this.dates = finalData.map(elem => new Date(Number(elem.timestamp)))
         this.prices = finalData.map(elem => elem.price)
