@@ -9,6 +9,10 @@ import { TrendsComponent } from './components/trends'
 import { DashHomeComponent } from './components/dash-home'
 import { MytrendsComponent } from './components/mytrends'
 import { NewTrendComponent } from './components/new-trend'
+import { TrendServiceService } from './services/trend-service.service'
+// resolvers
+import { trendResolver } from './resolvers/trend.resolve'
+
 
 const APP_ROUTES = [
     { path: '', component: HomePageComponent },
@@ -18,7 +22,11 @@ const APP_ROUTES = [
         children: [
             { path: '', component: DashHomeComponent },
             { path: 'profile', component: ProfileComponent },
-            { path: 'mytrends', component: MytrendsComponent },
+            { path: 'mytrends', component: MytrendsComponent, 
+                resolve: {
+                    trends: trendResolver
+                } 
+            },
             { path: 'new', component: NewTrendComponent },
             { path: 'trends', component: TrendsComponent, 
                 children: [
@@ -31,5 +39,7 @@ const APP_ROUTES = [
 ]
 
 export const APP_ROUTES_PROVIDER = [
+    trendResolver,
+    TrendServiceService,
     provideRouter(APP_ROUTES)
 ]
