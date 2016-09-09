@@ -25,7 +25,8 @@ module.exports = function(defaults) {
       'angular2-fontawesome/**/**/*.+(js|js.map)',
       'font-awesome/css/*.*',
       'font-awesome/fonts/*.*',
-      'angular2-jwt/**/*.+(js|js.map)'
+      'angular2-jwt/**/*.+(js|js.map)',
+      'angular2-localStorage/**/*.+(ts|js|js.map)'
     ]
   });
 };
