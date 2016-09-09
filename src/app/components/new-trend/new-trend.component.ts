@@ -77,7 +77,7 @@ export class NewTrendComponent implements OnInit {
       console.log(newTrend);
       this._trendService.createTrend(newTrend)
       .subscribe(
-        data =>  this._router.navigate(['/dash', '/trends']),
+        data =>  this._router.navigate(['/dash', '/mytrends']),
         err => console.log(err)
       )
     }    
