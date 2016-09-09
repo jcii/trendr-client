@@ -6,9 +6,6 @@
     <a [routerLink]="['/dash']" class="list-group-item">
       <i class="fa fa-fw fa-dashboard"></i> Dashboard
     </a>
-    <a [routerLink]="['/dash', '/trends']" class="list-group-item">
-      <i class="fa fa-fw fa-bar-chart-o"></i> My Trends
-    </a>
     <app-og-modal></app-og-modal>
     <div class="nested-menu">
       <a class="list-group-item" (click)="addExpandClass('pages')">
@@ -25,8 +22,8 @@
         </ul>
       </li>
     </div>
-    <a [routerLink]="['/dashboard', '/blank-page']" class="list-group-item">
-      <i class="fa fa-file-o"></i> &nbsp;BlankPage
+    <a [routerLink]="['/dash', '/trends']" class="list-group-item">
+      <i class="fa fa-fw fa-bar-chart-o"></i> My Trends
     </a>
   </ul>
   <div id="sidebar-logo">
