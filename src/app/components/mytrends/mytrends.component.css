@@ -7,7 +7,42 @@
 
 
 /*! normalize.css v4.0.0 | MIT License | github.com/necolas/normalize.css */
+/*
+.btn-outline-trendr-primary {
+  color: #FC913A;
+  background-image: none;
+  background-color: transparent;
+  border-color: #FC913A;
+}
+.btn-outline-trendr-primary:hover {
+  color: white;
+  background-color: #FC913A;
+}
+.btn-outline-trendr-secondary {
+  color: #FF4E50;
+  background-image: none;
+  background-color: transparent;
+  border-color: #FF4E50;
+}
+.btn-outline-trendr-secondary:hover {
+  color: white;
+  background-color: #FF4E50;
+}*/
 
+
+
+
+
+.list-group-item-twitter {
+  text-align: center;
+  color: white;
+  background-color: #00B9FE !important;
+}
+.list-group-item-stock {
+  text-align: center;
+  color: white;
+  background-color: #FC913A !important;
+}
 
 .card-img-top{
   width:100%;
