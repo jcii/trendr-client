@@ -19,7 +19,10 @@ export class StreamingWordsBarComponent implements OnInit {
   responsive: true
   };
 
-  barChartLabels:string[]
+  @Input() trendId:number;
+  @Input() user: string
+
+  barChartLabels:string[];
   public barChartType:string = 'bar';
   public barChartLegend:boolean = true;
 
@@ -36,24 +39,35 @@ export class StreamingWordsBarComponent implements OnInit {
   streamInterval: any
 
   updateChart = () => {
-    console.log('GETTING DATA');
-    console.log(typeof this._getData);
-    
-      this._getData.getData('http://localhost:3000/twitterStream/updateStreamGraph').subscribe(data => {
+    this._getData.postData('http://localhost:3000/twitterStream/updateStreamGraph', {trend_id: this.trendId}).subscribe(data => {
       console.log(data);
       this.barChartLabels = data.axisLabels
       this.barChartData = [{data: data.dataPoints, label:'Related Streaming Words'}]
     })
   }
 
+  openStream = ()=> {
+    this._getData.postData('http://localhost:3000/twitterStream/startStream', {trend_id: this.trendId}).subscribe(data => {
+      console.log(data)
+    })
+  }
+
+  endStream = () =>{
+    this._getData.postData('http://localhost:3000/twitterStream/endStream', {trend_id: this.trendId}).subscribe(data => {
+      console.log(data)
+    })
+  }
+
   ngOnInit() {
+    this.openStream()
     this.updateChart()
-    // this.streamInterval = setInterval(this.updateChart, 2500)
+    this.streamInterval = setInterval(this.updateChart, 5000)
+
   }
 
   ngOnDestroy() {
+    this.endStream()
     clearInterval(this.streamInterval);
   }
-
 
 }
