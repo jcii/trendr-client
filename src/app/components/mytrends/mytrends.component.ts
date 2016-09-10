@@ -1,5 +1,5 @@
 import { Component, OnInit,  } from '@angular/core'
-import { ActivatedRoute } from '@angular/router'
+import { ActivatedRoute, provideRouter, ROUTER_DIRECTIVES } from '@angular/router'
 import { TrendServiceService } from '../../services/trend-service.service'
 
 @Component({
@@ -7,6 +7,7 @@ import { TrendServiceService } from '../../services/trend-service.service'
   selector: 'app-mytrends',
   templateUrl: 'mytrends.component.html',
   styleUrls: ['mytrends.component.css'],
+  directives: [ROUTER_DIRECTIVES],
   providers: [TrendServiceService]
 })
 export class MytrendsComponent implements OnInit {

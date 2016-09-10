@@ -1,4 +1,3 @@
-
 <div class="card-columns">
   <div *ngFor="let trend of userTrends" class="card">
   <img class="card-img-top" src="http://img.wonkette.com/wp-content/uploads/2016/09/nbc-fires-donald-trump-after-he-calls-mexicans-rapists-and-drug-runners-1.jpg" alt="Card image cap">
@@ -7,13 +6,24 @@
     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
   </div>
   <ul class="list-group list-group-flush">
-    <li class="list-group-item">Cras justo odio</li>
-    <li class="list-group-item">Dapibus ac facilisis in</li>
-    <li class="list-group-item">Vestibulum at eros</li>
+    <li *ngFor="let symbol of trend.symbols" class="list-group-item list-group-item-stock">
+      <h3>
+        <i class="fa fa-line-chart" aria-hidden="true"></i>
+        {{ symbol.ticker }}
+      </h3>
+    </li>
   </ul>
-  <div class="card-block">
-    <a href="#" class="card-link">Card link</a>
-    <a href="#" class="card-link">Another link</a>
+  <ul class="list-group list-group-flush">
+    <li *ngFor="let keyword of trend.keywords" class="list-group-item list-group-item-twitter ">
+      <h3>
+        <i class="fa fa-twitter" aria-hidden="true"></i>
+        {{ keyword.keyword }}
+      </h3>
+    </li>
+  </ul>
+  <div class="card-block text-center">
+  <a [routerLink]="['/dash', '/trends', trend.id]" class="btn btn-outline-success">Show Trend</a>
+  <a class="btn btn-outline-danger">Delete Trend</a>
   </div>
 </div>
 </div>
