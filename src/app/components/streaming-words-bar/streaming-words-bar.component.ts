@@ -53,13 +53,15 @@ export class StreamingWordsBarComponent implements OnInit {
   }
 
   endStream = () =>{
-    this._getData.postData('http://localhost:3000/twitterStream/endStream', {trend_id: this.trendId})
+    this._getData.postData('http://localhost:3000/twitterStream/endStream', {trend_id: this.trendId}).subscribe(data => {
+      console.log(data)
+    })
   }
 
   ngOnInit() {
     this.openStream()
-    // this.updateChart()
-    // this.streamInterval = setInterval(this.updateChart, 2500)
+    this.updateChart()
+    this.streamInterval = setInterval(this.updateChart, 5000)
 
   }
 
@@ -67,6 +69,5 @@ export class StreamingWordsBarComponent implements OnInit {
     this.endStream()
     clearInterval(this.streamInterval);
   }
-
 
 }
