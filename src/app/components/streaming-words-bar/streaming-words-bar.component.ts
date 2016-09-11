@@ -40,6 +40,7 @@ export class StreamingWordsBarComponent implements OnInit {
 
   updateChart = () => {
     this._getData.postData('http://localhost:3000/twitterStream/updateStreamGraph', {trend_id: this.trendId}).subscribe(data => {
+      console.log('*********')
       console.log(data);
       this.barChartLabels = data.axisLabels
       this.barChartData = [{data: data.dataPoints, label:'Related Streaming Words'}]
