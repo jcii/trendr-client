@@ -84,12 +84,41 @@ export class CarouselComponent {
 
   getTweetCount = () => {
     this._getData.postData('http://localhost:3000/twitterStream/tweetCount', {trend_id: this.trendId}).subscribe(count => {
-      console.log(count)
       this.tweetCount = count
     })
   }
 
   tweetCountInterval: any
+    openStream = ()=> {
+    this._getData.postData('http://localhost:3000/twitterStream/startStream', {trend_id: this.trendId}).subscribe(data => {
+      console.log(data)
+    })
+  }
+
+  endStream = () =>{
+    this._getData.postData('http://localhost:3000/twitterStream/endStream', {trend_id: this.trendId}).subscribe(data => {
+      console.log(data)
+    })
+  }
+
+  streamInterval: any
+  streamingBarChartLabels: any[]
+  streamingBarChartData: any[]
+
+  updateChart = () => {
+    this._getData.postData('http://localhost:3000/twitterStream/updateStreamGraph', {trend_id: this.trendId}).subscribe(data => {
+      this.streamingBarChartLabels = data.axisLabels
+      this.streamingBarChartData = [{data: data.dataPoints, label:'Related Streaming Words'}]
+      this.doughnutChartLabels = data.axisLabels
+      this.doughnutChartData = data.dataPoints.map(elem => elem / data.total)
+    })
+  }
+
+  clearTrendTweets = () => {
+    this._getData.postData('http://localhost:3000/twitterStream/clearTweets', {trend_id: this.trendId}).subscribe(() => {
+      console.log('Tweets cleared')
+    })
+  } 
 
 
   ngOnInit() {
@@ -100,6 +129,9 @@ export class CarouselComponent {
     //   this.doughnutChartLabels = data.axisLabels
     //   this.doughnutChartData = data.dataPoints.map(elem => elem/data.total)
     // })
+    this.openStream()
+    this.updateChart()
+    this.streamInterval = setInterval(this.updateChart, 5000)
     this.getLocalStorage()
     this.getStockHistory()
     this.tweetCountInterval = setInterval(this.getTweetCount, 1000)
@@ -107,6 +139,9 @@ export class CarouselComponent {
   ngOnDestroy() {
     this.subscription.unsubscribe()
     clearInterval(this.tweetCountInterval)
+    this.endStream()
+    clearInterval(this.streamInterval);
+    this.clearTrendTweets()
   }
 
 }
