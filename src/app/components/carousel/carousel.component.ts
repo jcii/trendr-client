@@ -38,6 +38,7 @@ export class CarouselComponent {
     
     trendId: any
     user: string
+    tweetCount: number
 
 
   blur(elem) {
@@ -81,20 +82,31 @@ export class CarouselComponent {
     
   }
 
+  getTweetCount = () => {
+    this._getData.postData('http://localhost:3000/twitterStream/tweetCount', {trend_id: this.trendId}).subscribe(count => {
+      console.log(count)
+      this.tweetCount = count
+    })
+  }
+
+  tweetCountInterval: any
+
 
   ngOnInit() {
-    this._getData.getData('http://localhost:3000/twitterSearch').subscribe(data => {
-      console.log(data);
-      this.barChartLabels = data.axisLabels
-      this.barChartData = [{data: data.dataPoints, label:'Related Words'}]
-      this.doughnutChartLabels = data.axisLabels
-      this.doughnutChartData = data.dataPoints.map(elem => elem/data.total)
-    })
+    // this._getData.getData('http://localhost:3000/twitterSearch').subscribe(data => {
+    //   console.log(data);
+    //   this.barChartLabels = data.axisLabels
+    //   this.barChartData = [{data: data.dataPoints, label:'Related Words'}]
+    //   this.doughnutChartLabels = data.axisLabels
+    //   this.doughnutChartData = data.dataPoints.map(elem => elem/data.total)
+    // })
     this.getLocalStorage()
     this.getStockHistory()
+    this.tweetCountInterval = setInterval(this.getTweetCount, 1000)
   }
   ngOnDestroy() {
     this.subscription.unsubscribe()
+    clearInterval(this.tweetCountInterval)
   }
 
 }

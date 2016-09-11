@@ -28,8 +28,8 @@ export class RealtimeStockChartComponent implements OnInit {
       this.getDataService.postData('http://localhost:3000/realtimeStocks/updateDatabase', JSON.parse(data)).subscribe(finalData => {
         this.dates = finalData.map(elem => new Date(Number(elem.timestamp)))
         this.prices = finalData.map(elem => elem.price)
-        this.lineChartData = [{data: this.prices, label: 'stock price yo'}]
-        this.lineChartLabels = this.dates
+        this.lineChartData = [{data: this.prices.reverse(), label: 'stock price yo'}]
+        this.lineChartLabels = this.dates.reverse()
       })
     })
   }
