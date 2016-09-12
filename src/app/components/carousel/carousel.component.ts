@@ -11,6 +11,7 @@ import { GenLineChartComponent } from '../gen-line-chart'
 import { GenBarChartComponent } from '../gen-bar-chart'
 import { StreamingWordsBarComponent } from '../streaming-words-bar'
 import { Subscription } from 'rxjs/Rx'
+import { TweetCountPercentageService } from '../../services/tweet-count-percentage.service'
 
 @Component({
   moduleId: module.id,
@@ -30,7 +31,7 @@ import { Subscription } from 'rxjs/Rx'
 export class CarouselComponent {
   private subscription: Subscription
 
-  constructor(private _getData: GetDataService, private _activatedRoute: ActivatedRoute) {
+  constructor(private _getData: GetDataService, private _activatedRoute: ActivatedRoute, private _tweetCount: TweetCountPercentageService) {
     this.subscription = this._activatedRoute.params.subscribe(param => {
       this.trendId = param['id']
     })
@@ -135,6 +136,10 @@ export class CarouselComponent {
     this.getLocalStorage()
     this.getStockHistory()
     this.tweetCountInterval = setInterval(this.getTweetCount, 1000)
+    this._tweetCount.pushDataEvent.subscribe(count => {
+      console.log('*********************')
+      console.log(count)
+    })
   }
   ngOnDestroy() {
     this.subscription.unsubscribe()
@@ -142,6 +147,6 @@ export class CarouselComponent {
     this.endStream()
     clearInterval(this.streamInterval);
     this.clearTrendTweets()
-  }
+  } 
 
 }
