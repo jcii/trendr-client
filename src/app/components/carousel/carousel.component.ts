@@ -11,6 +11,7 @@ import { GenLineChartComponent } from '../gen-line-chart'
 import { GenBarChartComponent } from '../gen-bar-chart'
 import { StreamingWordsBarComponent } from '../streaming-words-bar'
 import { Subscription } from 'rxjs/Rx'
+import { TweetCountPercentageService } from '../../services/tweet-count-percentage.service'
 
 @Component({
   moduleId: module.id,
@@ -30,7 +31,7 @@ import { Subscription } from 'rxjs/Rx'
 export class CarouselComponent {
   private subscription: Subscription
 
-  constructor(private _getData: GetDataService, private _activatedRoute: ActivatedRoute) {
+  constructor(private _getData: GetDataService, private _activatedRoute: ActivatedRoute, private _tweetCount: TweetCountPercentageService) {
     this.subscription = this._activatedRoute.params.subscribe(param => {
       this.trendId = param['id']
     })
@@ -84,12 +85,41 @@ export class CarouselComponent {
 
   getTweetCount = () => {
     this._getData.postData('http://localhost:3000/twitterStream/tweetCount', {trend_id: this.trendId}).subscribe(count => {
-      console.log(count)
       this.tweetCount = count
     })
   }
 
   tweetCountInterval: any
+    openStream = ()=> {
+    this._getData.postData('http://localhost:3000/twitterStream/startStream', {trend_id: this.trendId}).subscribe(data => {
+      console.log(data)
+    })
+  }
+
+  endStream = () =>{
+    this._getData.postData('http://localhost:3000/twitterStream/endStream', {trend_id: this.trendId}).subscribe(data => {
+      console.log(data)
+    })
+  }
+
+  streamInterval: any
+  streamingBarChartLabels: any[]
+  streamingBarChartData: any[]
+
+  updateChart = () => {
+    this._getData.postData('http://localhost:3000/twitterStream/updateStreamGraph', {trend_id: this.trendId}).subscribe(data => {
+      this.streamingBarChartLabels = data.axisLabels
+      this.streamingBarChartData = [{data: data.dataPoints, label:'Related Streaming Words'}]
+      this.doughnutChartLabels = data.axisLabels
+      this.doughnutChartData = data.dataPoints.map(elem => elem / data.total)
+    })
+  }
+
+  clearTrendTweets = () => {
+    this._getData.postData('http://localhost:3000/twitterStream/clearTweets', {trend_id: this.trendId}).subscribe(() => {
+      console.log('Tweets cleared')
+    })
+  } 
 
 
   ngOnInit() {
@@ -100,13 +130,23 @@ export class CarouselComponent {
     //   this.doughnutChartLabels = data.axisLabels
     //   this.doughnutChartData = data.dataPoints.map(elem => elem/data.total)
     // })
+    this.openStream()
+    this.updateChart()
+    this.streamInterval = setInterval(this.updateChart, 5000)
     this.getLocalStorage()
     this.getStockHistory()
     this.tweetCountInterval = setInterval(this.getTweetCount, 1000)
+    this._tweetCount.pushDataEvent.subscribe(count => {
+      console.log('*********************')
+      console.log(count)
+    })
   }
   ngOnDestroy() {
     this.subscription.unsubscribe()
     clearInterval(this.tweetCountInterval)
-  }
+    this.endStream()
+    clearInterval(this.streamInterval);
+    this.clearTrendTweets()
+  } 
 
 }
