@@ -1,13 +1,15 @@
 import { Component, OnInit } from '@angular/core'
 import { ActivatedRoute, provideRouter, ROUTER_DIRECTIVES } from '@angular/router'
 import { TrendServiceService } from '../../services/trend-service.service'
+import { TestChartComponent } from '../../components/test-chart'
+import { HichartComponent } from '../../components/hichart'
 
 @Component({
   moduleId: module.id,
   selector: 'app-mytrends',
   templateUrl: 'mytrends.component.html',
   styleUrls: ['mytrends.component.css'],
-  directives: [ROUTER_DIRECTIVES],
+  directives: [ROUTER_DIRECTIVES, TestChartComponent, HichartComponent],
   providers: [TrendServiceService]
 })
 export class MytrendsComponent implements OnInit {

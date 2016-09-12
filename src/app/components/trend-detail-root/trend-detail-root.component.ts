@@ -38,7 +38,11 @@ export class TrendDetailRootComponent implements OnInit {
   private subscription: Subscription
   trendId: any
 
-  constructor(private getDataService: GetDataService, private activatedRoute: ActivatedRoute, private _tweetCount: TweetCountPercentageService) {
+  constructor (
+      private getDataService: GetDataService, 
+      private activatedRoute: ActivatedRoute, 
+      private _tweetCount: TweetCountPercentageService
+      ) {
     this.subscription = activatedRoute.params.subscribe(param => {
       this.trendId = param['id']
     })
