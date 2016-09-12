@@ -12,3 +12,7 @@
 .car-container:focus {
     opacity: 0;
 }
+
+.stock-chart {
+    width: 100%
+}

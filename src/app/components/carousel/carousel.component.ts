@@ -12,6 +12,7 @@ import { GenBarChartComponent } from '../gen-bar-chart'
 import { StreamingWordsBarComponent } from '../streaming-words-bar'
 import { Subscription } from 'rxjs/Rx'
 import { TweetCountPercentageService } from '../../services/tweet-count-percentage.service'
+import { PercentagePipe } from '../../pipes/percentage.pipe'
 
 @Component({
   moduleId: module.id,
@@ -26,7 +27,8 @@ import { TweetCountPercentageService } from '../../services/tweet-count-percenta
       GenLineChartComponent, 
       GenBarChartComponent, 
       StreamingWordsBarComponent],
-  providers: [GetDataService]
+  providers: [GetDataService], 
+  pipes: [PercentagePipe]
 })
 export class CarouselComponent {
   private subscription: Subscription
@@ -39,7 +41,9 @@ export class CarouselComponent {
     
     trendId: any
     user: string
-    tweetCount: number
+    tweetCount: number = 1
+    tweetsWithKeyword: number = 0
+    keywordPecentage: number
 
 
   blur(elem) {
@@ -58,7 +62,7 @@ export class CarouselComponent {
   groupedStockHistoryLabels: any[]
 
     getStockHistory() {
-      this._getData.postData('http://localhost:3000/stockHistory', {user: this.user, trendId: this.trendId, NumberOfDays: 7, DataPeriod: 'Day'}).subscribe(data => {
+      this._getData.postData('http://localhost:3000/stockHistory', {user: this.user, trendId: this.trendId, NumberOfDays: 10, DataPeriod: 'Day'}).subscribe(data => {
         console.log(data);
         this.stockHistoryLabels = data.map(elem => elem.full_date)
         this.stockHistoryData = data.map(elem => elem.price)
@@ -66,15 +70,15 @@ export class CarouselComponent {
       })
     }
 
-    groupThatShit() {
-      this._getData.postData('http://localhost:3000/stockHistory/groupBy', {grouping: 'day'}).subscribe(data => {
-        console.log(data)
-        this.groupedStockHistoryData = data.map(elem => Number(elem.price))
-        this.groupedStockHistoryLabels = data.map(elem => elem.day)
-        this.showStockHistory = false
-        this.groupData = true
-      })
-    }
+    // groupThatShit() {
+    //   this._getData.postData('http://localhost:3000/stockHistory/groupBy', {grouping: 'day'}).subscribe(data => {
+    //     console.log(data)
+    //     this.groupedStockHistoryData = data.map(elem => Number(elem.price))
+    //     this.groupedStockHistoryLabels = data.map(elem => elem.day)
+    //     this.showStockHistory = false
+    //     this.groupData = true
+    //   })
+    // }
   
   getLocalStorage = () => {
     let user = localStorage.getItem('user')
@@ -123,22 +127,17 @@ export class CarouselComponent {
 
 
   ngOnInit() {
-    // this._getData.getData('http://localhost:3000/twitterSearch').subscribe(data => {
-    //   console.log(data);
-    //   this.barChartLabels = data.axisLabels
-    //   this.barChartData = [{data: data.dataPoints, label:'Related Words'}]
-    //   this.doughnutChartLabels = data.axisLabels
-    //   this.doughnutChartData = data.dataPoints.map(elem => elem/data.total)
-    // })
     this.openStream()
     this.updateChart()
-    this.streamInterval = setInterval(this.updateChart, 5000)
+    this.streamInterval = setInterval(this.updateChart, 7000)
     this.getLocalStorage()
     this.getStockHistory()
     this.tweetCountInterval = setInterval(this.getTweetCount, 1000)
     this._tweetCount.pushDataEvent.subscribe(count => {
-      console.log('*********************')
-      console.log(count)
+      this.tweetsWithKeyword = count
+      this.keywordPecentage = Number((this.tweetsWithKeyword / this.tweetCount))
+      console.log(this.keywordPecentage);
+      
     })
   }
   ngOnDestroy() {
