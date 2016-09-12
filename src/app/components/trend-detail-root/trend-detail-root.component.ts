@@ -79,6 +79,7 @@ export class TrendDetailRootComponent implements OnInit {
       })
         this._tweetCount.pushData(this.tweetsForDisplay.length)
     })
+    
   }
   tweetInterval: any
 
