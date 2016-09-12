@@ -4785,7 +4785,7 @@ pre code {
   outline: 0
 }
 
-.form-control::-webkit-input-placeholder {
+/*.form-control::-webkit-input-placeholder {
   color: white;;
   opacity: 1
 }
@@ -4803,7 +4803,7 @@ pre code {
 .form-control::placeholder {
   color: white;;
   opacity: 1
-}
+}*/
 
 .has-success .checkbox,
 .has-success .checkbox-inline,

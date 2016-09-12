@@ -7,8 +7,7 @@
   <div [class.col-md-6]="query.value != ''" 
     [class.col-md-8]="query.value == '' || isTrendSelected" 
     [class.col-md-offset-2]="query.value == '' || isTrendSelected">
-    <form name="createTrend" #createTrend novalidate autocomplete="off" (ngSubmit)="createNewTrend()">
-      <div class="form-group">
+      <div class="form-group text-center">
         <p class="lead">First let's add a Trend title. What do you want your trend to be called?</p>
         <div class="form-group">
           <input 
@@ -17,8 +16,19 @@
             required 
             placeholder="Trend Title" 
             type="text" 
-            class="form-control" 
+            class="form-control input-lg" 
             id="trend-title">
+        </div> 
+        <p class="lead">Let's also add trend description. This is not required, but is suggested!</p>
+        <div class="form-group">
+          <input 
+            name="trendDescription"
+            [(ngModel)]="trend.description" 
+            required 
+            placeholder="Trend Description" 
+            type="text" 
+            class="form-control input-lg" 
+            id="trend-description">
         </div>
         <p [hidden]="isTrendSelected" class="lead">Next, let's add a primary stock symbol. Please search for a company below.</p>
         <p [hidden]="!isTrendSelected" class="lead">Stock Symbol Selected:</p>
@@ -39,7 +49,8 @@
             (keydown.arrowdown)="moveDown($event)" 
             (keyup)="searchForStock(query.value)" 
             type="text" 
-            class="form-control"
+            class="form-control input-lg"
+            placeholder="Trend Stock Symbol"
             id="symbol-search">
           <small [hidden]="isTrendSelected" class="form-text text-muted">NASDAQ, AMEX or NYSE symbol or Company name</small>
         </div>
@@ -57,19 +68,31 @@
             <span *ngFor="let word of trendKeywords" class="keyword_pill tag tag-twitter"> 
               <i (click)="removeKeyWord(word) && word.toggleState()" class="fa fa-times-circle" aria-hidden="true"></i>
               {{ word }}
-              <i class="fa fa-twitter" aria-hidden="true"></i>
-              </span>
-              </h1>
+              <i (click)="selectPrimaryKeyword($event, word)" [class.keyword-primary]="isPrimary(word)" class="fa fa-twitter" aria-hidden="true"></i>
+            </span>
+          </h1>
+
+          <p [hidden]="trendKeywords.length <= 1" class="lead">We need to select a active keyword for your trend.</p>
+          <span dropdown (onToggle)="toggled($event)" [hidden]="trendKeywords.length <= 1">
+            <button class="btn btn-lg btn-success" id="simple-dropdown" dropdownToggle>
+              Select Active Keyword
+            </button>
+            <ul class="dropdown-menu" dropdownMenu aria-labelledby="simple-dropdown">
+              <li *ngFor="let keyword of trendKeywords">
+                <a (click)="selectPrimaryKeyword($event, keyword)" class="dropdown-item" href="#">{{ keyword }}</a>
+              </li>
+            </ul>
+          </span>
+
+
           <p class="lead" [hidden]="trendKeywords.length === 0">That's it! Let's add your trend!</p>
           <h1 [hidden]="trendKeywords.length === 0">
-              <button type="submit" class="btn btn-outline-secondary">
+              <button (click)="createNewTrend()" class="btn btn-outline-secondary">
                 <h1>Create My Trend</h1>
           </button>
           </h1>
         </div>
       </div>
-    </form>
-
   </div>
   <!--begin stock symbol display-->
   <div [hidden]="isTrendSelected" class="col-md-6">
@@ -90,7 +113,7 @@
           <span [hidden]="symbol.IPOyear === 'n/a'" class="tag tag-default tag-pill pull-xs-right">IPO Year: {{ symbol.IPOyear }}</span>
         </div>
         <div class="col-md-2">
-          <div (click)="addSymbolToTrend(symbol.symbol)" class="btn btn-outline-primary add-button">
+          <div (click)="addSymbolToTrend(symbol)" class="btn btn-outline-primary add-button">
             <h3>Add</h3></div>
         </div>
       </li>
