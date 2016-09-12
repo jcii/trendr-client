@@ -7,8 +7,6 @@ export class TweetCountPercentageService {
   pushDataEvent = new EventEmitter<number>()
 
   pushData(count: number) {
-    console.log('********************')
-    console.log(count)
     this.pushDataEvent.emit(count)
   }
 

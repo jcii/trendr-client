@@ -39,7 +39,9 @@ export class CarouselComponent {
     
     trendId: any
     user: string
-    tweetCount: number
+    tweetCount: number = 1
+    tweetsWithKeyword: number = 0
+    keywordPecentage: number
 
 
   blur(elem) {
@@ -123,13 +125,6 @@ export class CarouselComponent {
 
 
   ngOnInit() {
-    // this._getData.getData('http://localhost:3000/twitterSearch').subscribe(data => {
-    //   console.log(data);
-    //   this.barChartLabels = data.axisLabels
-    //   this.barChartData = [{data: data.dataPoints, label:'Related Words'}]
-    //   this.doughnutChartLabels = data.axisLabels
-    //   this.doughnutChartData = data.dataPoints.map(elem => elem/data.total)
-    // })
     this.openStream()
     this.updateChart()
     this.streamInterval = setInterval(this.updateChart, 5000)
@@ -137,8 +132,10 @@ export class CarouselComponent {
     this.getStockHistory()
     this.tweetCountInterval = setInterval(this.getTweetCount, 1000)
     this._tweetCount.pushDataEvent.subscribe(count => {
-      console.log('*********************')
-      console.log(count)
+      this.tweetsWithKeyword = count
+      this.keywordPecentage = Number((this.tweetsWithKeyword / this.tweetCount))
+      console.log(this.keywordPecentage);
+      
     })
   }
   ngOnDestroy() {

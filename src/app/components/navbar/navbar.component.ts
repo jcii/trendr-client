@@ -14,8 +14,15 @@ import { FaDirective } from 'angular2-fontawesome/directives'
 
 export class NavbarComponent implements OnInit {
   constructor(private _router: Router) { }
-  ngOnInit() { }
+  username: string
+  ngOnInit() { 
+    let user = localStorage.getItem('user')
+    user = JSON.parse(JSON.parse(user)._body).username
+    this.username = user
+  }
   userLogout(event) {
     this._router.navigate(['/login'])
   }
+
+
 }
