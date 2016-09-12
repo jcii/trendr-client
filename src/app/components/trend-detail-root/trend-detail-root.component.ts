@@ -30,7 +30,7 @@ import { CarouselComponent } from '../carousel'
     SidebarComponent,
     CarouselComponent],
   providers: [GetDataService, TweetCountPercentageService]
-})
+}) 
 
 
 
