@@ -11,6 +11,7 @@ import {CHART_DIRECTIVES} from 'ng2-charts/ng2-charts';
 
 })
 export class GenBarChartComponent {
+  private barChartColors: any[] = [{ backgroundColor: ["#000", "#000", "#000", "#000", "#000"] }]; 
 
   constructor() {}
   public barChartOptions:any = {

@@ -34,7 +34,8 @@ const APP_ROUTES = [
                     { path: '', component: MytrendsComponent },
                     { path: ':id', component: TrendDetailRootComponent,
                         resolve: {
-                            trend: singleTrendResolver
+                            trend: singleTrendResolver,
+                            trends: trendResolver
                         } 
                     },
                 ]
