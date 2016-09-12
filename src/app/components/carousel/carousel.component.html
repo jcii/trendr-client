@@ -5,47 +5,22 @@
     <li data-target="#myCarousel" data-slide-to="1"></li>
     <li data-target="#myCarousel" data-slide-to="2"></li>
     <li data-target="#myCarousel" data-slide-to="3"></li>
-    <li data-target="#myCarousel" data-slide-to="4"></li>
-    <!--<li data-target="#myCarousel" data-slide-to="5"></li>-->
+    <!--<li data-target="#myCarousel" data-slide-to="4"></li>-->
   </ol>
 
   <!-- Wrapper for slides -->
   <div class="carousel-inner" role="listbox">
-    <div class="item active">
+    <!--<div class="item active">
       <app-hichart></app-hichart>
-    </div>
+    </div>-->
 
-
-    <div class="item">
-      <app-realtime-stock-chart
-      [trendId]="trendId"
-      [user]="user">
-      </app-realtime-stock-chart>
-    </div>
-
-    <div class="item">
-      <button class="btn btn-primary" (click)="groupThatShit()">Group that shit</button>
-
-      <app-gen-line-chart 
-          *ngIf="showStockHistory"
-          [lineChartData]="[{data: stockHistoryData, label: 'Stock history yo'}]" 
-          [lineChartLabels]="stockHistoryLabels">
-      </app-gen-line-chart>
-      
-      <app-gen-bar-chart
-        *ngIf="groupData"
-        [barChartData]="[{data: groupedStockHistoryData, label: 'Stock history yo'}]" 
-        [barChartLabels]="groupedStockHistoryLabels">
-      </app-gen-bar-chart>
-    </div>
-
-    <div class="item">
+    <div class="item active">
       <app-streaming-words-bar
-      [trendId]="trendId"
-      [user]="user"
-      [barChartLabels]="streamingBarChartLabels"
-      [barChartData]="streamingBarChartData">
-    </app-streaming-words-bar>
+        [trendId]="trendId"
+        [user]="user"
+        [barChartLabels]="streamingBarChartLabels"
+        [barChartData]="streamingBarChartData">
+      </app-streaming-words-bar>
     </div>
 
     <div class="item">
@@ -55,9 +30,26 @@
       </app-doughnut-word-sum>
     </div>
 
+    <div class="item">
+      <app-gen-line-chart 
+          class="stock-chart"
+          [lineChartData]="[{data: stockHistoryData, label: 'Stock History'}]" 
+          [lineChartLabels]="stockHistoryLabels">
+      </app-gen-line-chart>
+    </div>
+
+    <div class="item">
+      <app-realtime-stock-chart
+      [trendId]="trendId"
+      [user]="user">
+      </app-realtime-stock-chart>
+    </div>
+
+
+
+
   </div>
 
-  <!-- Left and right controls -->
   <a class="left carousel-control car-container" href="#myCarousel" role="button" data-slide="prev" id="leftCar" (click)="blur('leftCar')">
     <i class="fa fa-arrow-left slide-arrow" aria-hidden="true"></i>
     <span class="sr-only">Previous</span>
@@ -71,4 +63,4 @@
 <hr>
 
 <h1 class="h1">Tweet Count: {{tweetCount}}</h1>
-<h1 class="h1">Percentage With a Top Word %{{keywordPecentage * 100}}</h1>
+<h1 class="h1">Percentage With a Top Word {{keywordPecentage | percentage}}</h1>
