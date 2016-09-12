@@ -13,6 +13,7 @@ import { StreamingWordsBarComponent } from '../streaming-words-bar'
 import { Subscription } from 'rxjs/Rx'
 import { TweetCountPercentageService } from '../../services/tweet-count-percentage.service'
 import { PercentagePipe } from '../../pipes/percentage.pipe'
+import { CarouselToTrendDetailService } from '../../services/carousel-to-trend-detail.service'
 
 @Component({
   moduleId: module.id,
@@ -33,7 +34,12 @@ import { PercentagePipe } from '../../pipes/percentage.pipe'
 export class CarouselComponent {
   private subscription: Subscription
 
-  constructor(private _getData: GetDataService, private _activatedRoute: ActivatedRoute, private _tweetCount: TweetCountPercentageService) {
+  constructor (
+    private _getData: GetDataService, 
+    private _activatedRoute: ActivatedRoute, 
+    private _tweetCount: TweetCountPercentageService,
+    private _carouselToTrendDetail: CarouselToTrendDetailService
+    ) {
     this.subscription = this._activatedRoute.params.subscribe(param => {
       this.trendId = param['id']
     })
@@ -90,6 +96,10 @@ export class CarouselComponent {
   getTweetCount = () => {
     this._getData.postData('http://localhost:3000/twitterStream/tweetCount', {trend_id: this.trendId}).subscribe(count => {
       this.tweetCount = count
+      this._carouselToTrendDetail.pushData({
+        tweet_count: count,
+        tweet_percentage: this.keywordPecentage
+      })
     })
   }
 

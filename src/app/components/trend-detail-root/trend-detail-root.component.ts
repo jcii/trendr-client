@@ -12,7 +12,8 @@ import { GenLineChartComponent } from '../gen-line-chart'
 import { GenBarChartComponent } from '../gen-bar-chart'
 import { SidebarComponent } from '../../sidebar'
 import { CarouselComponent } from '../carousel'
-
+import { CarouselToTrendDetailService } from '../../services/carousel-to-trend-detail.service'
+import { PercentagePipe } from '../../pipes/percentage.pipe'
 
 @Component({
   moduleId: module.id,
@@ -29,25 +30,38 @@ import { CarouselComponent } from '../carousel'
     NavbarComponent,
     SidebarComponent,
     CarouselComponent],
-  providers: [GetDataService, TweetCountPercentageService]
+  providers: [GetDataService, TweetCountPercentageService, CarouselToTrendDetailService],
+  pipes: [PercentagePipe]
 }) 
 
 
 
 export class TrendDetailRootComponent implements OnInit {
   private subscription: Subscription
+  public tweetCountData: any = {
+    tweet_count: 0,
+    tweet_percentage: 0
+  }
+  public trendData: any
   trendId: any
-
   constructor (
       private getDataService: GetDataService, 
       private activatedRoute: ActivatedRoute, 
-      private _tweetCount: TweetCountPercentageService
+      private _tweetCount: TweetCountPercentageService,
+      private _carouselToTrendDetail: CarouselToTrendDetailService,
+      public route: ActivatedRoute
       ) {
+    this.route.data.subscribe(
+      response => {
+        this.trendData = response['trend'].json()
+      }
+    )
+
     this.subscription = activatedRoute.params.subscribe(param => {
       this.trendId = param['id']
     })
-  }
 
+  }
 
   getLocalStorage = () => {
     let user = localStorage.getItem('user')
@@ -63,7 +77,6 @@ export class TrendDetailRootComponent implements OnInit {
         this.usedTweetIds.push(tweet.id)
         this.tweetsForDisplay.push(tweet)
       })
-        console.log(this.tweetsForDisplay.length)
         this._tweetCount.pushData(this.tweetsForDisplay.length)
     })
   }
@@ -73,6 +86,13 @@ export class TrendDetailRootComponent implements OnInit {
       this.getLocalStorage()
       this.tweetInterval = setInterval(this.getTweetsForDisplay, 1000)
       this.getTweetsForDisplay()
+      this._carouselToTrendDetail.pushDataEvent
+        .subscribe(
+          data => {
+            this.tweetCountData = data
+            console.log(this.tweetCountData)
+          }
+        )
     }
 
   ngOnDestroy() {

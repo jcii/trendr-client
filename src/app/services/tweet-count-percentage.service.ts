@@ -9,5 +9,5 @@ export class TweetCountPercentageService {
   pushData(count: number) {
     this.pushDataEvent.emit(count)
   }
-
+  
 }
