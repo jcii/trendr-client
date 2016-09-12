@@ -1,4 +1,4 @@
-import { Component, OnInit,  } from '@angular/core'
+import { Component, OnInit } from '@angular/core'
 import { ActivatedRoute, provideRouter, ROUTER_DIRECTIVES } from '@angular/router'
 import { TrendServiceService } from '../../services/trend-service.service'
 
@@ -20,8 +20,6 @@ export class MytrendsComponent implements OnInit {
       }
     )
   console.log(this.userTrends);
-  }
-
+}
   ngOnInit() { }
-
 }

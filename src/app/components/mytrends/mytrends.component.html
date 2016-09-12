@@ -16,7 +16,7 @@
   <ul class="list-group list-group-flush">
     <li *ngFor="let keyword of trend.keywords" class="list-group-item list-group-item-twitter ">
       <h3>
-        <i class="fa fa-twitter" aria-hidden="true"></i>
+        <i [class.keyword-primary]="keyword.is_active" class="fa fa-twitter" aria-hidden="true"></i>
         {{ keyword.keyword }}
       </h3>
     </li>
