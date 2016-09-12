@@ -17,15 +17,17 @@ export class RealtimeStockChartComponent implements OnInit {
   lineChartDataArray: Array<any> = [
     {data: this.prices, label: 'Stock Price Yo'}
   ]
-  @Input() trendId: any
-  @Input() user: string
+  @Input() trendId: any;
+  @Input() user: string;
 
   constructor(private getDataService: GetDataService, private ar: ApplicationRef, private cdr: ChangeDetectorRef) { }
 
 
     getStockData = () => {
     this.getDataService.postData('http://localhost:3000/realtimeStocks', {trendId: this.trendId, user: this.user}).subscribe(data => {
-      this.getDataService.postData('http://localhost:3000/realtimeStocks/updateDatabase', JSON.parse(data)).subscribe(finalData => {
+      let postData = JSON.parse(data)
+      postData.trend_id = Number(this.trendId)
+      this.getDataService.postData('http://localhost:3000/realtimeStocks/updateDatabase', postData).subscribe(finalData => {
         this.dates = finalData.map(elem => new Date(Number(elem.timestamp)))
         this.prices = finalData.map(elem => elem.price)
         this.lineChartData = [{data: this.prices.reverse(), label: 'stock price yo'}]
