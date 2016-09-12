@@ -12,6 +12,7 @@ import { NewTrendComponent } from './components/new-trend'
 import { TrendServiceService } from './services/trend-service.service'
 // resolvers
 import { trendResolver } from './resolvers/trend.resolve'
+import { singleTrendResolver } from './resolvers/singleTrend.resolve'
 
 
 const APP_ROUTES = [
@@ -31,7 +32,11 @@ const APP_ROUTES = [
             { path: 'trends', component: TrendsComponent, 
                 children: [
                     { path: '', component: MytrendsComponent },
-                    { path: ':id', component: TrendDetailRootComponent },
+                    { path: ':id', component: TrendDetailRootComponent,
+                        resolve: {
+                            trend: singleTrendResolver
+                        } 
+                    },
                 ]
             }
         ]
@@ -40,6 +45,7 @@ const APP_ROUTES = [
 
 export const APP_ROUTES_PROVIDER = [
     trendResolver,
+    singleTrendResolver,
     TrendServiceService,
     provideRouter(APP_ROUTES)
 ]
