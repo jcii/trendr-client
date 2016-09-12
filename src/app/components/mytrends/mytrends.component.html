@@ -4,7 +4,7 @@
     <app-hichart></app-hichart>
   <div class="card-block">
     <h4 class="card-title">{{ trend.trend_title }}</h4>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    <p class="card-text">{{trend.trend_description}}</p>
   </div>
   <ul class="list-group list-group-flush">
     <li *ngFor="let symbol of trend.symbols" class="list-group-item list-group-item-stock">
