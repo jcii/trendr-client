@@ -13,7 +13,9 @@ import { GenBarChartComponent } from '../gen-bar-chart'
 import { SidebarComponent } from '../../sidebar'
 import { CarouselComponent } from '../carousel'
 import { CarouselToTrendDetailService } from '../../services/carousel-to-trend-detail.service'
+import { StockToTrendDetailService } from '../../services/stock-to-trend-detail.service'
 import { PercentagePipe } from '../../pipes/percentage.pipe'
+import { CurrencyPipe } from '../../pipes/currency.pipe'
 
 @Component({
   moduleId: module.id,
@@ -30,8 +32,8 @@ import { PercentagePipe } from '../../pipes/percentage.pipe'
     NavbarComponent,
     SidebarComponent,
     CarouselComponent],
-  providers: [GetDataService, TweetCountPercentageService, CarouselToTrendDetailService],
-  pipes: [PercentagePipe]
+  providers: [GetDataService, TweetCountPercentageService, CarouselToTrendDetailService, StockToTrendDetailService],
+  pipes: [PercentagePipe, CurrencyPipe]
 })
 
 export class TrendDetailRootComponent implements OnInit {
@@ -51,6 +53,7 @@ export class TrendDetailRootComponent implements OnInit {
     private activatedRoute: ActivatedRoute, 
     private _tweetCount: TweetCountPercentageService,
     private _carouselToTrendDetail: CarouselToTrendDetailService,
+    private _stockToTrendDetail: StockToTrendDetailService,
     public route: ActivatedRoute
     ) {
       // get user
@@ -81,6 +84,7 @@ export class TrendDetailRootComponent implements OnInit {
 
   usedTweetIds: number[] = [0]
   tweetsForDisplay: any[] = []
+  latestStockPrice: number = 0
 
 
   getTweetsForDisplay = () => {
@@ -107,6 +111,7 @@ export class TrendDetailRootComponent implements OnInit {
             console.log(this.tweetCountData)
           }
         )
+      this._stockToTrendDetail.pushDataEvent.subscribe(data => this.latestStockPrice = data)
     }
 
   ngOnDestroy() {
