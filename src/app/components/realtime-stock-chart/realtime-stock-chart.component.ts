@@ -2,6 +2,8 @@ import { Component, OnInit, ApplicationRef, ChangeDetectorRef, OnDestroy, Input 
 import { GetDataService } from '../../services/get-data.service'
 import {CORE_DIRECTIVES, FORM_DIRECTIVES, NgClass} from '@angular/common';
 import {CHART_DIRECTIVES} from 'ng2-charts/ng2-charts';
+import { StockToTrendDetailService } from '../../services/stock-to-trend-detail.service'
+
 
 @Component({
   moduleId: module.id,
@@ -20,7 +22,10 @@ export class RealtimeStockChartComponent implements OnInit {
   @Input() trendId: any;
   @Input() user: string;
 
-  constructor(private getDataService: GetDataService, private ar: ApplicationRef, private cdr: ChangeDetectorRef) { }
+  constructor(private getDataService: GetDataService, 
+    private ar: ApplicationRef, 
+    private cdr: ChangeDetectorRef, 
+    private _stockToTrendDetailService: StockToTrendDetailService) { }
 
 
     getStockData = () => {
@@ -32,6 +37,7 @@ export class RealtimeStockChartComponent implements OnInit {
         this.prices = finalData.map(elem => elem.price)
         this.lineChartData = [{data: this.prices.reverse(), label: 'stock price yo'}]
         this.lineChartLabels = this.dates.reverse()
+        this._stockToTrendDetailService.pushData(this.prices[this.prices.length - 1])  
       })
     })
   }

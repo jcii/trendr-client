@@ -10,7 +10,7 @@ export class PercentagePipe implements PipeTransform {
       return '%' + (0).toFixed(2)
     } else {
       return '%' + (value * 100).toFixed(2)
-    }
+    } 
   }
 
 }

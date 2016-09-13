@@ -29,6 +29,10 @@
   background-color: #FF4E50;
 }*/
 
+.chart {
+  width: 80% !important;
+  margin: 0 auto;
+}
 
 .keyword-primary{
     color: gold;
