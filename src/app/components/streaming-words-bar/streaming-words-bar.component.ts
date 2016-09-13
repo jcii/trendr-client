@@ -12,6 +12,7 @@ import { GetDataService } from '../../services/get-data.service'
   providers: [GetDataService]
 })
 export class StreamingWordsBarComponent {
+ private barChartColors: any[] = [{ backgroundColor: ["#FC913A", "#FC913A", "#FC913A", "#FC913A", "#FC913A"] }]; 
 
   constructor(private _getData: GetDataService) {}
   public barChartOptions:any = {

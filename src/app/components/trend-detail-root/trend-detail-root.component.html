@@ -1,6 +1,11 @@
 <app-navbar></app-navbar>
 <sidebar></sidebar>
-
+<div class="row">
+  <div class="text-center">
+    <h1>{{ selectedTrend.trend_title }}</h1>
+    <h2>{{ selectedTrend.trend_description }}</h2>
+  </div>
+</div>
 <div class="row">
   <div class="col-xl-3 col-lg-6">
     <div class="card card-primary card-inverse">
@@ -21,10 +26,15 @@
       <div class="card-header card-success">
         <div class="row">
           <div class="col-xs-3"> <i class="fa fa-line-chart fa-5x"></i> </div>
-          <div class="col-xs-9 text-xs-right">
+          <div class="col-xs-6">
+            <div class="text-center">
+              <h1>{{ selectedTrend.symbols[0].ticker }}</h1>
+            </div>
+          </div>
+          <div class="col-xs-3 text-xs-right">
             <div class="huge">
               <h1>12</h1></div>
-            <div>Stocks Watching</div>
+            <div>Price</div>
           </div>
         </div>
       </div>
@@ -59,8 +69,49 @@
     </div>
   </div>
 </div>
+<div class="row">
+  <div class="col-md-9">
+    <app-carousel></app-carousel>
+  </div>
+  <div class="col-md-3">
 
 
-<app-carousel></app-carousel>
 
 
+
+    <div class="chat-panel card card-default">
+      <div class="card-header"> <i class="fa fa-comments fa-fw"></i> Tweet Stream
+      </div>
+      <div class="card-block">
+        <ul class="chat">
+          <li class="left clearfix">
+            <span class="chat-img pull-left">                    
+               <img alt="User Avatar" class="img-circle" src="http://placehold.it/50/55C1E7/fff">                 
+               </span>
+           
+           
+           
+            <div *ngFor="let tweet of tweetsForView" class="chat-body clearfix">
+              <div class="header"> 
+                <strong class="primary-font pull-left">Jack Sparrow</strong>
+                <small class="pull-left text-muted">               
+                      <i class="fa fa-clock-o fa-fw"></i> 12 mins ago
+                </small>
+              </div><br><br>
+              <p>{{ tweet.text }}</p>
+            </div>
+
+
+          </li>
+        </ul>
+      </div>
+      <div class="card-footer">
+     
+      </div>
+    </div>
+
+
+
+
+  </div>
+</div>

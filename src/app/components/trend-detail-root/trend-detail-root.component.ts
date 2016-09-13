@@ -32,9 +32,7 @@ import { PercentagePipe } from '../../pipes/percentage.pipe'
     CarouselComponent],
   providers: [GetDataService, TweetCountPercentageService, CarouselToTrendDetailService],
   pipes: [PercentagePipe]
-}) 
-
-
+})
 
 export class TrendDetailRootComponent implements OnInit {
   private subscription: Subscription
@@ -43,25 +41,38 @@ export class TrendDetailRootComponent implements OnInit {
     tweet_percentage: 0
   }
   public trendData: any
-  trendId: any
+  public selectedTrend: any
+  public userData: any
+  public trendId: any
+  public tweetsForView: any = []
+
   constructor (
-      private getDataService: GetDataService, 
-      private activatedRoute: ActivatedRoute, 
-      private _tweetCount: TweetCountPercentageService,
-      private _carouselToTrendDetail: CarouselToTrendDetailService,
-      public route: ActivatedRoute
-      ) {
-    this.route.data.subscribe(
-      response => {
-        this.trendData = response['trend'].json()
-      }
-    )
-
-    this.subscription = activatedRoute.params.subscribe(param => {
-      this.trendId = param['id']
-    })
-
-  }
+    private getDataService: GetDataService, 
+    private activatedRoute: ActivatedRoute, 
+    private _tweetCount: TweetCountPercentageService,
+    private _carouselToTrendDetail: CarouselToTrendDetailService,
+    public route: ActivatedRoute
+    ) {
+      // get user
+      this.userData = localStorage.getItem('user')
+      // get trend id
+      this.subscription = activatedRoute.params.subscribe(param => {
+        this.trendId = param['id']
+      })
+      // get resolves from router
+      this.route.data.subscribe(
+        response => {
+          this.trendData = response['trend'].json()
+          this.selectedTrend = response['trends'].json().trend['trends'].filter(i => Number(this.trendId))[0]
+        }
+      )
+      // populate array for tweets to display
+      setInterval(() => {
+        if(this.tweetsForDisplay.length != 0){
+          this.tweetsForView.unshift(this.tweetsForDisplay[this.tweetsForDisplay.length - 1])
+        }
+      }, 2000)
+    }
 
   getLocalStorage = () => {
     let user = localStorage.getItem('user')
@@ -71,16 +82,18 @@ export class TrendDetailRootComponent implements OnInit {
   usedTweetIds: number[] = [0]
   tweetsForDisplay: any[] = []
 
+
   getTweetsForDisplay = () => {
     this.getDataService.postData('http://localhost:3000/twitterStream/tweetsForDisplay', {usedTweetIds: this.usedTweetIds, trend_id: this.trendId}).subscribe(data => {
       data.forEach(tweet => {
         this.usedTweetIds.push(tweet.id)
-        this.tweetsForDisplay.push(tweet)
+        this.tweetsForDisplay.push(tweet)      
       })
         this._tweetCount.pushData(this.tweetsForDisplay.length)
     })
     
   }
+
   tweetInterval: any
 
     ngOnInit() {
@@ -100,5 +113,4 @@ export class TrendDetailRootComponent implements OnInit {
     this.subscription.unsubscribe()
     clearInterval(this.tweetInterval)
   }
-
 }
