@@ -11,12 +11,18 @@ import {CHART_DIRECTIVES} from 'ng2-charts/ng2-charts';
   directives: [CHART_DIRECTIVES, NgClass, CORE_DIRECTIVES, FORM_DIRECTIVES]
 })
 export class GenLineChartComponent implements OnInit {
-
+  public lineChartColors:Array<any> = [
+    { // grey
+      backgroundColor: 'rgba(148,159,177,0.2)',
+      borderColor: '#FC913A',
+      pointBackgroundColor: 'rgba(148,159,177,1)',
+      pointBorderColor: '#fff',
+      pointHoverBackgroundColor: '#fff',
+      pointHoverBorderColor: 'rgba(148,159,177,0.8)'
+    }
+  ]
   constructor() { }
-
   @Input() lineChartData:Array<any> 
-
-
   @Input() lineChartLabels:Array<any>
 
 

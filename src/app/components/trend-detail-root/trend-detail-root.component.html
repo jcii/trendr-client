@@ -1,9 +1,24 @@
 <app-navbar></app-navbar>
 <sidebar></sidebar>
 <div class="row">
-  <div class="text-center">
-    <h1>{{ selectedTrend.trend_title }}</h1>
-    <h2>{{ selectedTrend.trend_description }}</h2>
+  <div class="col-md-6">
+    <div class="card-black">
+      <div class="text-center">
+        <h1>{{ selectedTrend.trend_title }}</h1>
+        <h2>{{ selectedTrend.trend_description }}</h2>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div class="text-center">
+      <h3>
+        <span *ngFor="let keyword of selectedTrend.keywords" class="keyword_pill tag tag-twitter"> 
+          <!--<i (click)="removeKeyWord(word)" class="fa fa-times-circle" aria-hidden="true"></i>-->
+          {{ keyword.keyword }}
+          <i (click)="selectPrimaryKeyword($event, word)" [class.keyword-primary]="keyword.is_active" class="fa fa-twitter" aria-hidden="true"></i>
+        </span>
+      </h3>
+    </div>
   </div>
 </div>
 <div class="row">
@@ -58,11 +73,11 @@
     <div class="card card-danger card-inverse">
       <div class="card-header card-danger">
         <div class="row">
-          <div class="col-xs-3"> <i class="fa fa-support fa-5x"></i> </div>
+          <div class="col-xs-3"> <i class="fa fa-star fa-5x"></i> </div>
           <div class="col-xs-9 text-xs-right">
             <div class="huge">
               <h1>13</h1></div>
-            <div>Support Tickets!</div>
+            <div>Active Keyword</div>
           </div>
         </div>
       </div>
@@ -74,44 +89,26 @@
     <app-carousel></app-carousel>
   </div>
   <div class="col-md-3">
-
-
-
-
-
     <div class="chat-panel card card-default">
-      <div class="card-header"> <i class="fa fa-comments fa-fw"></i> Tweet Stream
+      <div class="card-header">
+        <i class="fa fa-twitter fa-fw"></i> Realtime Tweet Stream
       </div>
       <div class="card-block">
         <ul class="chat">
-          <li class="left clearfix">
+          <li *ngFor="let tweet of tweetsForView" class="left clearfix">
             <span class="chat-img pull-left">                    
-               <img alt="User Avatar" class="img-circle" src="http://placehold.it/50/55C1E7/fff">                 
-               </span>
-           
-           
-           
-            <div *ngFor="let tweet of tweetsForView" class="chat-body clearfix">
+               <img alt="User Avatar" class="img-circle" src="{{ tweet.profile_image }}">                 
+            </span>
+            <div class="chat-body clearfix">
               <div class="header"> 
-                <strong class="primary-font pull-left">Jack Sparrow</strong>
-                <small class="pull-left text-muted">               
-                      <i class="fa fa-clock-o fa-fw"></i> 12 mins ago
-                </small>
+                <strong class="primary-font pull-left">{{ tweet.screen_name }}</strong>
               </div><br><br>
               <p>{{ tweet.text }}</p>
             </div>
-
-
           </li>
         </ul>
       </div>
-      <div class="card-footer">
-     
-      </div>
+      <div class="card-footer"></div>
     </div>
-
-
-
-
   </div>
 </div>
