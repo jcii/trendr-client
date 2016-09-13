@@ -63,13 +63,13 @@ export class TrendDetailRootComponent implements OnInit {
       this.route.data.subscribe(
         response => {
           this.trendData = response['trend'].json()
-          this.selectedTrend = response['trends'].json()['trends'].filter(i => Number(this.trendId))[0]          
+          this.selectedTrend = response['trends'].json().trend['trends'].filter(i => Number(this.trendId))[0]
         }
       )
       // populate array for tweets to display
       setInterval(() => {
         if(this.tweetsForDisplay.length != 0){
-          this.tweetsForView.push(this.tweetsForDisplay[this.tweetsForDisplay.length - 1])
+          this.tweetsForView.unshift(this.tweetsForDisplay[this.tweetsForDisplay.length - 1])
         }
       }, 2000)
     }
