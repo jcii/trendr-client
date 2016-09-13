@@ -1,0 +1,63 @@
+input{
+    text-align: center !important;
+}
+.card-black{
+  color:white;
+  background-color: black;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 10px;
+}
+.keyword-primary{
+    color: gold;
+}
+.tag-default {
+    background-color: #818a91;
+}
+.tag-primary {
+    background-color: #FC913A;
+}
+.tag-secondary {
+    background-color: #FF4E50;
+}
+.tag-twitter {
+    background-color: #00B9FE; 
+}
+.tag-success {
+ background-color: #5cb85c; 
+}
+.tag-pill {
+    padding-right: .6em;
+    padding-left: .6em;
+    border-radius: 10rem;
+}
+.tag {
+    display: inline-block;
+    padding: .25em .2em; 
+    font-weight: 700;
+    line-height: 1;
+    color: #fff;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: .25rem;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.tag-danger{
+    background-color: #d9534f;
+}
+
+.keyword_pill{
+  margin: 10px;
+}
+.text-center {
+  text-align: center;
+}
+.full-width {
+  width: 100%;
+}
+
+.add-button {
+    padding: 10px;
+}

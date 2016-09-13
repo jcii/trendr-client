@@ -146,7 +146,7 @@ html {
 }
 .btn-outline-sidebar{
     font-size: 25px;
-    color: #FC913A;
+    color: white !important;
     background-image: none;
     background-color: transparent;
     border-color: #FC913A;

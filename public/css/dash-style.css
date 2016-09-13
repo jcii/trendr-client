@@ -9156,7 +9156,7 @@ a:hover {
 }
 
 .chat-panel .chat {
-  height: 407px;
+  height: 100vh;
   overflow-y: scroll;
   margin: 0;
   padding: 0

@@ -10,7 +10,7 @@ import {CHART_DIRECTIVES} from 'ng2-charts/ng2-charts';
   directives: [CHART_DIRECTIVES, NgClass, CORE_DIRECTIVES, FORM_DIRECTIVES]
 })
 export class DoughnutWordSumComponent {
- private doughnutChartColors: any[] = [{ backgroundColor: ["#000", "#000", "#000", "#000", "#000"] }]; 
+ private doughnutChartColors: any[] = [{ backgroundColor: ["#5CB85C", "#0275D8", "#FC913A", "#D9534F", "#000"] }]; 
 
   @Input() doughnutChartLabels:string[]
   @Input() doughnutChartData:number[]

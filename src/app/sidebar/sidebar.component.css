@@ -4,7 +4,9 @@
     margin-top: 3vh;
 }
 
-
+.btn-outline-sidebar {
+    color:white;
+}
 
 
 @import url(https://fonts.googleapis.com/css?family=Montserrat:700);
