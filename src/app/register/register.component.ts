@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router'
 import { UserService } from '../services/user.service'
 import { User } from '../interfaces/user.interface'
-import { EqualValidator } from '../directives/equal-validatior.directive'
+import { EqualValidator } from '../directives/equal-validatior.directive' 
 
 @Component({
   moduleId: module.id,

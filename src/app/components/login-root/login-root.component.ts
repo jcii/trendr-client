@@ -6,7 +6,7 @@ import { contentHeaders } from '../../common/headers'
 import { User } from '../../interfaces/user.interface'
 import { BrowserDomAdapter } from '@angular/platform-browser/src/browser/browser_adapter';
 
-@Component({
+@Component({ 
   moduleId: module.id,
   selector: 'app-login-root',
   templateUrl: 'login-root.component.html',
@@ -23,7 +23,7 @@ export class LoginRootComponent implements OnInit {
     private _browserDomAdapter: BrowserDomAdapter) { }
     
   ngOnInit() {
-    // this._browserDomAdapter.addClass(this._browserDomAdapter.query("div.animate-hide"), "animate-show")
+    this._browserDomAdapter.addClass(this._browserDomAdapter.query("div.animate-hide"), "animate-show")
     this.user = {
       username: '',
       password: '',
