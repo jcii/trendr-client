@@ -8,8 +8,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MarketStatusComponent implements OnInit {
   public nasdaqOpen: boolean = true
-  public nyseOpen: boolean = false
-  public amexOpen: boolean = false
+  public nyseOpen: boolean = true
+  public amexOpen: boolean = true
   constructor() { }
   ngOnInit() { }
 
